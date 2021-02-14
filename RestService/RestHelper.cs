@@ -90,7 +90,6 @@ namespace RestService
 
             return obj;
         }
-
         public async static Task<R> MakePost<T, R>(string url, T obj)
         {
             
@@ -156,6 +155,15 @@ namespace RestService
         public async static Task<List<Product>> SearchProducts(string parametros)
         {
             return await Rest.MakeGet<List<Product>>(urlSearchProducts + parametros);
+        }
+    }
+
+    public static class SaleService
+    {
+        private const string urlRegisterSale = "/sale";
+        public async static Task<Sale> RegisterSale(Sale sale)
+        {
+            return await Rest.MakePost<Sale, Sale>(urlRegisterSale, sale);
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Entities
 {
@@ -72,6 +73,52 @@ namespace Entities
                     ", saleUnit='" + saleUnit + '\'' +
                     ", salePrice=" + salePrice +
                     ", idProduct='" + idProduct + '\'' +
+                    '}';
+        }
+    }
+
+    public class Sale
+    {
+        public long idSale { get; set; }
+        public string nameClient { get; set; }
+        public DateTime dateSale { get; set; }
+        public decimal total { get; set; }
+        public List<DetailSale> detailSaleList { get; set; }
+        public Sale()
+        {
+            // empty for framework
+        }
+
+        public override string ToString()
+        {
+            return "Sale{" +
+                "idSale=" + idSale +
+                ", nameClient='" + nameClient + '\'' +
+                ", dateSale=" + dateSale +
+                ", detailSaleList=" + detailSaleList +
+                ", total=" + total +
+                '}';
+        }
+    }
+    public class DetailSale
+    {
+        public long idDetailSale { get; set; }
+        public decimal saleCount { get; set; }
+        public decimal subTotal { get; set; }
+        public long idDetailProduct { get; set; }
+        public long idSale { get; set; }
+        public DetailSale()
+        {
+            // empty for framework
+        }
+        public override string ToString()
+        {
+            return "detailSale{" +
+                    "idDetailSale=" + idDetailSale +
+                    ", saleCount=" + saleCount +
+                    ", subTotal=" + subTotal +
+                    ", idDetailProduct=" + idDetailProduct +
+                    ", idSale=" + idSale +
                     '}';
         }
     }
