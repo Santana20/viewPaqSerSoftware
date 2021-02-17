@@ -14,7 +14,6 @@ namespace Entities
         }
         
     }
-
     public class ProductType
     {
         public long idProductType { get; set; }
@@ -26,7 +25,6 @@ namespace Entities
         }
 
     }
-
     public class Product
     {
         public string idProduct { get; set; }
@@ -51,12 +49,11 @@ namespace Entities
                     '}';
         }
     }
-
     public class DetailProduct
     {
         public long idDetailProduct { get; set; }
         public string netContent { get; set; }
-        public long stock { get; set; }
+        public decimal stock { get; set; }
         public decimal salePrice { get; set; }
         public string saleUnit { get; set; }
         public string idProduct { get; set; }
@@ -76,7 +73,6 @@ namespace Entities
                     '}';
         }
     }
-
     public class Sale
     {
         public long idSale { get; set; }

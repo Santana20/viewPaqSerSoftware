@@ -127,14 +127,13 @@ namespace viewPaqSerSoftware
 
         #endregion
 
-        private void dgvProducts_SelectionChanged(object sender, EventArgs e)
+        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
             try
             {
-                if (dgvProducts.SelectedRows[0] != default)
+                if (dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
                 {
-                    Product product = (Product)dgvProducts.SelectedRows[0].DataBoundItem;
+                    Product product = (Product)dgvProducts.Rows[e.RowIndex].DataBoundItem;
                     dgvProductDetails.DataSource = product.detailProductsList;
                 }
             }
@@ -142,9 +141,7 @@ namespace viewPaqSerSoftware
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
-
     }
 
 }

@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducts));
             this.btnCreateProduct = new System.Windows.Forms.Button();
             this.lbl_idProduct = new System.Windows.Forms.Label();
             this.lbl_nameProduct = new System.Windows.Forms.Label();
@@ -41,11 +43,12 @@
             this.btnRegisterBrand = new System.Windows.Forms.Button();
             this.btnRegisterProductType = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
+            this.dgvProductDetails = new System.Windows.Forms.DataGridView();
             this.idProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idBrand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.idProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dgvProductDetails = new System.Windows.Forms.DataGridView();
+            this.DetailProduct = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
             this.SuspendLayout();
@@ -160,20 +163,53 @@
             // 
             // dgvProducts
             // 
+            this.dgvProducts.AllowUserToAddRows = false;
+            this.dgvProducts.AllowUserToDeleteRows = false;
             this.dgvProducts.AllowUserToOrderColumns = true;
+            this.dgvProducts.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvProducts.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvProducts.BackgroundColor = System.Drawing.Color.White;
+            this.dgvProducts.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvProducts.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idProduct,
             this.nameProduct,
             this.idBrand,
-            this.idProductType});
-            this.dgvProducts.Location = new System.Drawing.Point(58, 199);
+            this.idProductType,
+            this.DetailProduct});
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.NullValue = "(nulo)";
+            dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(8);
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dgvProducts.Location = new System.Drawing.Point(58, 204);
             this.dgvProducts.Name = "dgvProducts";
+            this.dgvProducts.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.dgvProducts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
+            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.dgvProducts.Size = new System.Drawing.Size(691, 253);
             this.dgvProducts.TabIndex = 8;
-            this.dgvProducts.SelectionChanged += new System.EventHandler(this.dgvProducts_SelectionChanged);
+            this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
+            // 
+            // dgvProductDetails
+            // 
+            this.dgvProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProductDetails.Location = new System.Drawing.Point(58, 484);
+            this.dgvProductDetails.Name = "dgvProductDetails";
+            this.dgvProductDetails.RowHeadersWidth = 51;
+            this.dgvProductDetails.RowTemplate.Height = 24;
+            this.dgvProductDetails.Size = new System.Drawing.Size(691, 220);
+            this.dgvProductDetails.TabIndex = 9;
             // 
             // idProduct
             // 
@@ -181,7 +217,7 @@
             this.idProduct.HeaderText = "Cod. Producto";
             this.idProduct.MinimumWidth = 6;
             this.idProduct.Name = "idProduct";
-            this.idProduct.Width = 125;
+            this.idProduct.ReadOnly = true;
             // 
             // nameProduct
             // 
@@ -189,7 +225,7 @@
             this.nameProduct.HeaderText = "Nombre de Producto";
             this.nameProduct.MinimumWidth = 6;
             this.nameProduct.Name = "nameProduct";
-            this.nameProduct.Width = 125;
+            this.nameProduct.ReadOnly = true;
             // 
             // idBrand
             // 
@@ -197,7 +233,7 @@
             this.idBrand.HeaderText = "Marca";
             this.idBrand.MinimumWidth = 6;
             this.idBrand.Name = "idBrand";
-            this.idBrand.Width = 125;
+            this.idBrand.ReadOnly = true;
             // 
             // idProductType
             // 
@@ -205,24 +241,22 @@
             this.idProductType.HeaderText = "Tipo de Producto";
             this.idProductType.MinimumWidth = 6;
             this.idProductType.Name = "idProductType";
-            this.idProductType.Width = 125;
+            this.idProductType.ReadOnly = true;
             // 
-            // dgvProductDetails
+            // DetailProduct
             // 
-            this.dgvProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductDetails.Location = new System.Drawing.Point(58, 477);
-            this.dgvProductDetails.Name = "dgvProductDetails";
-            this.dgvProductDetails.RowHeadersWidth = 51;
-            this.dgvProductDetails.RowTemplate.Height = 24;
-            this.dgvProductDetails.Size = new System.Drawing.Size(691, 220);
-            this.dgvProductDetails.TabIndex = 9;
+            this.DetailProduct.Description = "Presentaciones del producto";
+            this.DetailProduct.HeaderText = "Ver Presentaciones";
+            this.DetailProduct.Image = ((System.Drawing.Image)(resources.GetObject("DetailProduct.Image")));
+            this.DetailProduct.MinimumWidth = 6;
+            this.DetailProduct.Name = "DetailProduct";
             // 
             // FormProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(805, 738);
+            this.ClientSize = new System.Drawing.Size(1419, 753);
             this.Controls.Add(this.dgvProductDetails);
             this.Controls.Add(this.dgvProducts);
             this.Controls.Add(this.btnRegisterProductType);
@@ -268,6 +302,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn idBrand;
         private System.Windows.Forms.DataGridViewTextBoxColumn idProductType;
+        private System.Windows.Forms.DataGridViewImageColumn DetailProduct;
     }
 }
 
