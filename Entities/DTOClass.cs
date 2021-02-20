@@ -6,40 +6,64 @@ namespace Entities
 {
     public class Cart
     {
-        private List<CartItem> cartItems;
+        //private List<CartItem> cartItems;
+
+        private Dictionary<long, CartItem> CartItems;
         public decimal total { get; set; }
 
         public Cart()
         {
-            this.cartItems = new List<CartItem>();
+            //this.cartItems = new List<CartItem>();
+            this.CartItems = new Dictionary<long, CartItem>();
             total = 0m;
+        }
+
+        public List<CartItem> getCartList()
+        {
+            return new List<CartItem>(this.CartItems.Values);
         }
         public void AddCartItem(CartItem cartItem)
         {
-            this.cartItems.Add(cartItem);
+            //this.cartItems.Add(cartItem);
+            this.CartItems.Add(cartItem.idDetailProduct, cartItem);
             total += cartItem.subTotal;
         }
-        public void UpdateSaleCountByIndex(int index, decimal saleCount)
+        public void UpdateSaleCountByIndex(long key, decimal saleCount)
         {
-            this.cartItems[index].saleCount = saleCount;
+            // this.cartItems[index].saleCount = saleCount;
+            CartItem value;
+            if (this.CartItems.TryGetValue(key, out value))
+            {
+                value.saleCount = saleCount;
 
-            total -= this.cartItems[index].subTotal;
-            this.cartItems[index].UpdateSubTotal();
-            total += this.cartItems[index].subTotal;
+                total -= value.subTotal;
+                value.UpdateSubTotal();
+                total += value.subTotal;
+            }
+
+            // total -= this.cartItems[index].subTotal;
+            // this.cartItems[index].UpdateSubTotal();
+            // total += this.cartItems[index].subTotal;
         }
-        public void DeleteCartItem(int index)
+        public void DeleteCartItem(long key)
         {
-            total -= this.cartItems[index].subTotal;
-            this.cartItems.RemoveAt(index);
+            CartItem value;
+            if (this.CartItems.TryGetValue(key, out value))
+            {
+                total -= value.subTotal;
+                this.CartItems.Remove(key);
+            }
+            // total -= this.cartItems[index].subTotal;
+            // this.cartItems.RemoveAt(index);
         }
         public List<DetailSale> ToDetailSaleList()
         {
             decimal lastTotal = total;
             List<DetailSale> detailSales = new List<DetailSale>();
-            foreach (CartItem cartItem in this.cartItems)
+            foreach (KeyValuePair<long, CartItem> pair in this.CartItems)
             {
-                detailSales.Add(cartItem.ToDetailSale());
-                total += cartItem.subTotal;
+                detailSales.Add(pair.Value.ToDetailSale());
+                total += pair.Value.subTotal;
             }
             return detailSales;
         }
@@ -51,10 +75,10 @@ namespace Entities
         public decimal priceUnit { get; set; }
         public decimal saleCount { get; set; }
         public decimal subTotal { get; set; }
-        private long idDetailProduct;
+        public long idDetailProduct { get; set; }
         public CartItem() { }
         public CartItem(Product product, DetailProduct detailProduct,
-            decimal saleCount)
+            decimal saleCount = 0m)
         {
             this.idProduct = product.idProduct;
             this.idDetailProduct = detailProduct.idDetailProduct;

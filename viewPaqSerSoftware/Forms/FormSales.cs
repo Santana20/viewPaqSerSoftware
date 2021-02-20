@@ -14,38 +14,51 @@ namespace viewPaqSerSoftware.Forms
 {
     public partial class FormSales : Form
     {
+        public Cart carrito { get; set; }
         public FormSales()
         {
             InitializeComponent();
+            this.dgvCart.AutoGenerateColumns = false;
         }
         private void FormSales_Load(object sender, EventArgs e)
         {
-            
-            /*
-            Sale testSale = new Sale()
+            this.dgvCart.DataSource = this.carrito.getCartList();
+        }
+
+        private void btnUpdateDS_Click(object sender, EventArgs e)
+        {
+            try
             {
-                nameClient = "Felipe",
-                total = 400.00m,
-                detailSaleList = new List<DetailSale>()
+                if (this.dgvCart.SelectedRows.Count > 1)
+                    throw new ArgumentException("Debe seleccionar solo una fila para editar.");
+                if (this.dgvCart.SelectedRows.Count == 0)
+                    throw new ArgumentException("Debe seleccionar una fila para editar.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void btnDeleteDS_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = new DialogResult();
+                FormInformation formInformation = new FormInformation("¿ESTAS SEGURO DE ELIMINAR EL REGISTRO?");
+                result = formInformation.ShowDialog();
+                if (result == DialogResult.OK)
                 {
-                    new DetailSale()
-                    {
-                        saleCount = 2m,
-                        subTotal = 200.00m,
-                        idDetailProduct = 3
-                    },
-                    new DetailSale()
-                    {
-                        saleCount = 1m,
-                        subTotal = 200.00m,
-                        idDetailProduct = 4
-                    }
+                    CartItem detailProduct =  (CartItem)(this.dgvCart.CurrentRow.DataBoundItem);
+                    this.carrito.DeleteCartItem(detailProduct.idDetailProduct);
+                    this.dgvCart.DataSource = this.carrito.getCartList();
+                    FormSuccess.confirmationForm("ELIMINADO");
                 }
-            };
-            
-            Sale resultSale = await SaleService.RegisterSale(testSale);
-            MessageBox.Show(resultSale.ToString());
-            */
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

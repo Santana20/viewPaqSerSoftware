@@ -4,16 +4,21 @@ using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using viewPaqSerSoftware.Forms;
 
 namespace viewPaqSerSoftware
 {
     public partial class FormProducts : Form
     {
+        #region Attributes
+        public Cart carrito { get; set; }
+        private Product currentProductSelected;
+        #endregion
         public FormProducts()
         {
             InitializeComponent();
-            //restService = new RestHelper();
-            
+            dgvProducts.AutoGenerateColumns = false;
+            dgvProductDetails.AutoGenerateColumns = false;
         }
 
         private void LoadTheme()
@@ -28,6 +33,7 @@ namespace viewPaqSerSoftware
                     btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
                 }
             }
+            dgvProductDetails.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
         }
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -64,7 +70,7 @@ namespace viewPaqSerSoftware
 
                 Product responseProduct = await ProductService.RegisterProduct(product);
 
-                MessageBox.Show("El producto fue registrado correctamente.\n" + responseProduct.ToString());
+                FormSuccess.confirmationForm("REGISTRADO");
             }
             catch (Exception ex)
             {
@@ -74,7 +80,6 @@ namespace viewPaqSerSoftware
             ClearItems(); txtIdProduct.Focus();
 
         }
-
         private async void btnSearch_Click(object sender, EventArgs e)
         {
             try
@@ -133,11 +138,32 @@ namespace viewPaqSerSoftware
             {
                 if (dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
                 {
-                    Product product = (Product)dgvProducts.Rows[e.RowIndex].DataBoundItem;
-                    dgvProductDetails.DataSource = product.detailProductsList;
+                    this.currentProductSelected = (Product)dgvProducts.Rows[e.RowIndex].DataBoundItem;
+                    dgvProductDetails.DataSource = this.currentProductSelected.detailProductsList;
                 }
             }
             catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnAddDPToCart_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvProductDetails.SelectedRows.Count == 0)
+                {
+                    throw new Exception("Seleccione producto(s) para agregar al carrito");
+                }
+
+                foreach (DataGridViewRow detailProduct in this.dgvProductDetails.SelectedRows)
+                {
+                    this.carrito.AddCartItem(new CartItem(currentProductSelected, 
+                                            (DetailProduct)detailProduct.DataBoundItem));
+                }
+                FormSuccess.confirmationForm("AGREGADO");
+            }
+            catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

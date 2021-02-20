@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,12 +30,14 @@ namespace viewPaqSerSoftware
         
         private Form activeForm;
         private FormTypes activeFormType;
+        private Cart carrito;
         #endregion
 
         public HomeForm()
         {
             InitializeComponent();
             random = new Random();
+            carrito = new Cart();
             btnCloseChildForm.Visible = false;
             this.Text = String.Empty;
         }
@@ -116,13 +119,25 @@ namespace viewPaqSerSoftware
         private void btnMenuProducts_Click(object sender, EventArgs e)
         {
             if (activeForm == null || activeFormType != FormTypes.FormProducts)
-                OpenChildForm(new FormProducts(), FormTypes.FormProducts, sender);
+            {
+                FormProducts formProduct = new FormProducts
+                {
+                    carrito = this.carrito
+                };
+                OpenChildForm(formProduct, FormTypes.FormProducts, sender);
+            }
         }
 
         private void btnMenuSales_Click(object sender, EventArgs e)
         {
             if (activeForm == null || activeFormType != FormTypes.FormSales)
-                OpenChildForm(new FormSales(), FormTypes.FormSales, sender);
+            {
+                FormSales formSales = new FormSales
+                {
+                    carrito = this.carrito
+                };
+                OpenChildForm(formSales, FormTypes.FormSales, sender);
+            }
         }
         #endregion
 
@@ -130,6 +145,11 @@ namespace viewPaqSerSoftware
         {
             if (activeForm != null) activeForm.Close();
             ResetFormStyle();
+        }
+
+        private void HomeForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
