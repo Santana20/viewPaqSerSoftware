@@ -39,6 +39,10 @@ namespace Entities
             this.cartItems.RemoveAt(index);
             this.validateList.Remove(key);
         }
+        public CartItem GetByIndex(int index)
+        {
+            return this.cartItems[index];
+        }
         public List<DetailSale> ToDetailSaleList()
         {
             total = 0;
@@ -64,6 +68,7 @@ namespace Entities
         public decimal saleCount { get; set; }
         public decimal subTotal { get; set; }
         public long idDetailProduct { get; set; }
+        public decimal Stock { get; }
         public CartItem() { }
         public CartItem(Product product, DetailProduct detailProduct,
             decimal saleCount = 0m)
@@ -75,6 +80,7 @@ namespace Entities
                 " / ", product.idProductType, ".");
             this.priceUnit = detailProduct.salePrice;
             this.saleCount = saleCount;
+            this.Stock = detailProduct.stock;
             this.UpdateSubTotal();
         }
         public DetailSale ToDetailSale()

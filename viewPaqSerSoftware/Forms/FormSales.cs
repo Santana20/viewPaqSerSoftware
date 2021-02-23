@@ -16,7 +16,6 @@ namespace viewPaqSerSoftware.Forms
     {
         #region Atributtes
         public Cart carrito { get; set; }
-        //private BindingSource source;
         private BindingList<CartItem> source;
         #endregion
         public FormSales()
@@ -39,12 +38,15 @@ namespace viewPaqSerSoftware.Forms
                 if (this.dgvCart.SelectedRows.Count == 0)
                     throw new ArgumentException("Debe seleccionar una fila para editar.");
 
+                int index = this.dgvCart.CurrentRow.Index;
+
                 DialogResult result = new DialogResult();
-                FormModifySaleCount frmModifySaleCount = new FormModifySaleCount("Ingrese la cantidad");
-                result = frmModifySaleCount.ShowDialog();
+                FormModifySaleCount frmModifySaleCount = new FormModifySaleCount(
+                    "Ingrese la cantidad", this.carrito.GetByIndex(index));
+                result = frmModifySaleCount.ShowDialog(this);
+
                 if (result == DialogResult.OK)
                 {
-                    int index = this.dgvCart.CurrentRow.Index;
                     this.carrito.UpdateSaleCountByIndex(index, frmModifySaleCount.value);
                     this.source.ResetItem(index);
 

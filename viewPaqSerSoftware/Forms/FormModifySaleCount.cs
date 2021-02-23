@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,19 +14,21 @@ namespace viewPaqSerSoftware.Forms
     public partial class FormModifySaleCount : Form
     {
         public decimal value { get; set; }
-        public FormModifySaleCount(string message)
+        private CartItem currentItem; 
+        public FormModifySaleCount(string message, CartItem curItem)
         {
             InitializeComponent();
             this.lblMessage.Text = message;
+            this.currentItem = curItem;
             this.txtSaleCount.Focus();
         }
-
         private void btnOk_Click(object sender, EventArgs e)
         {
             try
             {
-                value = Convert.ToInt32(txtSaleCount.Text);
-
+                value = Convert.ToInt32(this.txtSaleCount.Text);
+                if (value > this.currentItem.Stock)
+                    throw new ArgumentException("La cantidad no puede ser mayor al stock disponible.");
                 this.DialogResult = DialogResult.OK;
             }
             catch(Exception ex)
