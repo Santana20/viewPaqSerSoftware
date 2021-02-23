@@ -6,80 +6,54 @@ namespace Entities
 {
     public class Cart
     {
-        //public List<CartItem> cartItems { get; }
-
-        private SortedDictionary<long, CartItem> CartItems;
+        private List<CartItem> cartItems;
+        private SortedSet<long> validateList;
         public decimal total { get; set; }
-
         public Cart()
         {
-            //this.cartItems = new List<CartItem>();
-            this.CartItems = new SortedDictionary<long, CartItem>();
+            this.cartItems = new List<CartItem>();
+            this.validateList = new SortedSet<long>();
             total = 0m;
         }
-        public int getCount() { return this.CartItems.Count; }
-        public IEnumerable<CartItem> getCartList()
-        {
-            return this.CartItems.Values;
-        }
-
-        public List<CartItem> getList()
-        {
-            List<CartItem> Items = new List<CartItem>();
-            foreach (KeyValuePair<long, CartItem> pair in this.CartItems)
-            {
-                Items.Add(pair.Value);
-            }
-            return Items;
-        }
+        public int getCount() { return this.cartItems.Count; }
+        public List<CartItem> getList() { return this.cartItems; }
         public void AddCartItem(CartItem cartItem)
         {
-            //this.cartItems.Add(cartItem);
-            this.CartItems.Add(cartItem.idDetailProduct, cartItem);
-            total += cartItem.subTotal;
-        }
-        public void UpdateSaleCountByIndex(long key, decimal saleCount)
-        {
-            // this.cartItems[index].saleCount = saleCount;
-            CartItem value;
-            if (this.CartItems.TryGetValue(key, out value))
+            if (this.validateList.Add(cartItem.idDetailProduct))
             {
-                value.saleCount = saleCount;
-
-                total -= value.subTotal;
-                value.UpdateSubTotal();
-                total += value.subTotal;
+                this.cartItems.Add(cartItem);
+                total += cartItem.subTotal;
             }
-
-            // total -= this.cartItems[index].subTotal;
-            // this.cartItems[index].UpdateSubTotal();
-            // total += this.cartItems[index].subTotal;
+            else throw new Exception("El producto ya se encuentra en el carrito");
         }
-        public void DeleteCartItem(long key)
+        public void UpdateSaleCountByIndex(int index, decimal saleCount)
         {
-            CartItem value;
-            if (this.CartItems.TryGetValue(key, out value))
-            {
-                total -= value.subTotal;
-                this.CartItems.Remove(key);
-            }
-            //total -= this.cartItems[index].subTotal;
-            //this.cartItems.RemoveAt(index);
+            this.cartItems[index].saleCount = saleCount;
+            total -= this.cartItems[index].subTotal;
+            this.cartItems[index].UpdateSubTotal();
+            total += this.cartItems[index].subTotal;
+        }
+        public void DeleteCartItem(int index, long key)
+        {
+            total -= this.cartItems[index].subTotal;
+            this.cartItems.RemoveAt(index);
+            this.validateList.Remove(key);
         }
         public List<DetailSale> ToDetailSaleList()
         {
             total = 0;
             List<DetailSale> detailSales = new List<DetailSale>();
-            foreach (KeyValuePair<long, CartItem> pair in this.CartItems)
+            foreach(CartItem value in this.cartItems)
             {
-                detailSales.Add(pair.Value.ToDetailSale());
-                total += pair.Value.subTotal;
+                detailSales.Add(value.ToDetailSale());
+                total += value.subTotal;
             }
             return detailSales;
         }
         public void GenerateNewList()
         {
-            this.CartItems = new SortedDictionary<long, CartItem>();
+            this.cartItems = new List<CartItem>();
+            this.validateList = new SortedSet<long>();
         }
     }
     public class CartItem

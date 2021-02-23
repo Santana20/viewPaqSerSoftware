@@ -16,7 +16,8 @@ namespace viewPaqSerSoftware.Forms
     {
         #region Atributtes
         public Cart carrito { get; set; }
-        private BindingSource source;
+        //private BindingSource source;
+        private BindingList<CartItem> source;
         #endregion
         public FormSales()
         {
@@ -25,11 +26,7 @@ namespace viewPaqSerSoftware.Forms
         }
         private void FormSales_Load(object sender, EventArgs e)
         {
-            this.source = new BindingSource
-            {
-                DataSource = this.carrito.getCartList()
-            };
-
+            this.source = new BindingList<CartItem>(this.carrito.getList());
             this.dgvCart.DataSource = this.source;
         }
 
@@ -47,10 +44,10 @@ namespace viewPaqSerSoftware.Forms
                 result = frmModifySaleCount.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    CartItem detailProduct = (CartItem)(this.dgvCart.CurrentRow.DataBoundItem);
-                    this.carrito.UpdateSaleCountByIndex(detailProduct.idDetailProduct, frmModifySaleCount.value);
-                    //this.dgvCart.DataSource = this.carrito.getCartList();
-                    this.source.ResetBindings(false);
+                    int index = this.dgvCart.CurrentRow.Index;
+                    this.carrito.UpdateSaleCountByIndex(index, frmModifySaleCount.value);
+                    this.source.ResetItem(index);
+
                     FormSuccess.ConfirmationForm("MODIFICADO");
                 }
             }
@@ -64,18 +61,19 @@ namespace viewPaqSerSoftware.Forms
         {
             try
             {
+                if (this.dgvCart.SelectedRows.Count == 0)
+                    throw new ArgumentException("Debe seleccionar una fila para eliminar.");
+
                 DialogResult result = new DialogResult();
                 FormInformation formInformation = new FormInformation("¿ESTAS SEGURO DE ELIMINAR EL REGISTRO?");
                 result = formInformation.ShowDialog();
                 if (result == DialogResult.OK)
                 {
                     CartItem detailProduct = this.dgvCart.CurrentRow.DataBoundItem as CartItem;
-                    this.carrito.DeleteCartItem(detailProduct.idDetailProduct);
-                    //this.dgvCart.DataSource = this.carrito.getCartList();
-                    //this.source.DataSource = null;
-                    //this.source.DataSource = this.carrito.getCartList();
-                    //this.dgvCart.DataSource = null; this.dgvCart.DataSource = this.source;
-                    this.source.ResetBindings(false);
+                    int index = this.dgvCart.CurrentRow.Index;
+                    this.carrito.DeleteCartItem(index, detailProduct.idDetailProduct);
+                    this.source.ResetBindings();
+
                     FormSuccess.ConfirmationForm("ELIMINADO");
                 }
             }
@@ -110,7 +108,9 @@ namespace viewPaqSerSoftware.Forms
                 FormSuccess.ConfirmationForm("Venta #" + resultSale.idSale);
 
                 this.carrito.GenerateNewList();
-                //this.dgvCart.DataSource = this.carrito.getCartList();
+                this.dgvCart.DataSource = null;
+                this.txtNameClient.Text = string.Empty;
+                this.txtNameClient.Focus();
             }
             catch (Exception ex)
             {

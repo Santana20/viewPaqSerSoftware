@@ -16,7 +16,8 @@ namespace viewPaqSerSoftware.Forms
         public FormModifySaleCount(string message)
         {
             InitializeComponent();
-            lblMessage.Text = message;
+            this.lblMessage.Text = message;
+            this.txtSaleCount.Focus();
         }
 
         private void btnOk_Click(object sender, EventArgs e)
@@ -24,6 +25,7 @@ namespace viewPaqSerSoftware.Forms
             try
             {
                 value = Convert.ToInt32(txtSaleCount.Text);
+
                 this.DialogResult = DialogResult.OK;
             }
             catch(Exception ex)
