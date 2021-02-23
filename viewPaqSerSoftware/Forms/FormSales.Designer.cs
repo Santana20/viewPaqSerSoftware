@@ -37,10 +37,10 @@
             this.saleCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSaleDetails = new System.Windows.Forms.Label();
-            this.btnAddDS = new System.Windows.Forms.Button();
             this.btnUpdateDS = new System.Windows.Forms.Button();
             this.btnDeleteDS = new System.Windows.Forms.Button();
             this.btnRegisterSale = new System.Windows.Forms.Button();
+            this.btnAddDS = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -137,15 +137,6 @@
             this.lblSaleDetails.TabIndex = 3;
             this.lblSaleDetails.Text = "Detalle de venta";
             // 
-            // btnAddDS
-            // 
-            this.btnAddDS.Location = new System.Drawing.Point(452, 108);
-            this.btnAddDS.Name = "btnAddDS";
-            this.btnAddDS.Size = new System.Drawing.Size(111, 46);
-            this.btnAddDS.TabIndex = 4;
-            this.btnAddDS.Text = "Agregar";
-            this.btnAddDS.UseVisualStyleBackColor = true;
-            // 
             // btnUpdateDS
             // 
             this.btnUpdateDS.Location = new System.Drawing.Point(580, 108);
@@ -174,6 +165,17 @@
             this.btnRegisterSale.TabIndex = 7;
             this.btnRegisterSale.Text = "Realizar Venta";
             this.btnRegisterSale.UseVisualStyleBackColor = true;
+            this.btnRegisterSale.Click += new System.EventHandler(this.btnRegisterSale_Click);
+            // 
+            // btnAddDS
+            // 
+            this.btnAddDS.Location = new System.Drawing.Point(452, 108);
+            this.btnAddDS.Name = "btnAddDS";
+            this.btnAddDS.Size = new System.Drawing.Size(111, 46);
+            this.btnAddDS.TabIndex = 4;
+            this.btnAddDS.Text = "Agregar";
+            this.btnAddDS.UseVisualStyleBackColor = true;
+            this.btnAddDS.Click += new System.EventHandler(this.btnAddDS_Click);
             // 
             // FormSales
             // 
@@ -203,7 +205,6 @@
         private System.Windows.Forms.Label lblnameClient;
         private System.Windows.Forms.DataGridView dgvCart;
         private System.Windows.Forms.Label lblSaleDetails;
-        private System.Windows.Forms.Button btnAddDS;
         private System.Windows.Forms.Button btnUpdateDS;
         private System.Windows.Forms.Button btnDeleteDS;
         private System.Windows.Forms.Button btnRegisterSale;
@@ -212,5 +213,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn priceUnit;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleCount;
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
+        private System.Windows.Forms.Button btnAddDS;
     }
 }

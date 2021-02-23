@@ -70,7 +70,7 @@ namespace viewPaqSerSoftware
 
                 Product responseProduct = await ProductService.RegisterProduct(product);
 
-                FormSuccess.confirmationForm("REGISTRADO");
+                FormSuccess.ConfirmationForm("REGISTRADO");
             }
             catch (Exception ex)
             {
@@ -161,7 +161,7 @@ namespace viewPaqSerSoftware
                     this.carrito.AddCartItem(new CartItem(currentProductSelected, 
                                             (DetailProduct)detailProduct.DataBoundItem));
                 }
-                FormSuccess.confirmationForm("AGREGADO");
+                FormSuccess.ConfirmationForm("AGREGADO");
             }
             catch(Exception ex)
             {

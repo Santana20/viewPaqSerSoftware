@@ -83,6 +83,12 @@
     <Compile Include="Forms\FormInformation.Designer.cs">
       <DependentUpon>FormInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormModifySaleCount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormModifySaleCount.Designer.cs">
+      <DependentUpon>FormModifySaleCount.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormProducts.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +118,9 @@
     <Compile Include="ThemeColor.cs" />
     <EmbeddedResource Include="Forms\FormInformation.resx">
       <DependentUpon>FormInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormModifySaleCount.resx">
+      <DependentUpon>FormModifySaleCount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormProducts.resx">
       <DependentUpon>FormProducts.cs</DependentUpon>

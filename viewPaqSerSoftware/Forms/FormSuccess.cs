@@ -17,7 +17,7 @@ namespace viewPaqSerSoftware.Forms
             InitializeComponent();
             this.lblMessage.Text = message;
         }
-        public static void confirmationForm(string message)
+        public static void ConfirmationForm(string message)
         {
             FormSuccess formSuccess = new FormSuccess(message);
             formSuccess.ShowDialog();

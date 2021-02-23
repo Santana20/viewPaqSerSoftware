@@ -6,21 +6,31 @@ namespace Entities
 {
     public class Cart
     {
-        //private List<CartItem> cartItems;
+        //public List<CartItem> cartItems { get; }
 
-        private Dictionary<long, CartItem> CartItems;
+        private SortedDictionary<long, CartItem> CartItems;
         public decimal total { get; set; }
 
         public Cart()
         {
             //this.cartItems = new List<CartItem>();
-            this.CartItems = new Dictionary<long, CartItem>();
+            this.CartItems = new SortedDictionary<long, CartItem>();
             total = 0m;
         }
-
-        public List<CartItem> getCartList()
+        public int getCount() { return this.CartItems.Count; }
+        public IEnumerable<CartItem> getCartList()
         {
-            return new List<CartItem>(this.CartItems.Values);
+            return this.CartItems.Values;
+        }
+
+        public List<CartItem> getList()
+        {
+            List<CartItem> Items = new List<CartItem>();
+            foreach (KeyValuePair<long, CartItem> pair in this.CartItems)
+            {
+                Items.Add(pair.Value);
+            }
+            return Items;
         }
         public void AddCartItem(CartItem cartItem)
         {
@@ -53,12 +63,12 @@ namespace Entities
                 total -= value.subTotal;
                 this.CartItems.Remove(key);
             }
-            // total -= this.cartItems[index].subTotal;
-            // this.cartItems.RemoveAt(index);
+            //total -= this.cartItems[index].subTotal;
+            //this.cartItems.RemoveAt(index);
         }
         public List<DetailSale> ToDetailSaleList()
         {
-            decimal lastTotal = total;
+            total = 0;
             List<DetailSale> detailSales = new List<DetailSale>();
             foreach (KeyValuePair<long, CartItem> pair in this.CartItems)
             {
@@ -66,6 +76,10 @@ namespace Entities
                 total += pair.Value.subTotal;
             }
             return detailSales;
+        }
+        public void GenerateNewList()
+        {
+            this.CartItems = new SortedDictionary<long, CartItem>();
         }
     }
     public class CartItem
