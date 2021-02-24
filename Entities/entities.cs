@@ -18,7 +18,6 @@ namespace Entities
     {
         public long idProductType { get; set; }
         public string nameProductType { get; set; }
-
         public ProductType()
         {
             //empty for framework
@@ -29,10 +28,11 @@ namespace Entities
     {
         public string idProduct { get; set; }
         public string nameProduct { get; set; }
-        public long idBrand { get; set; }
-        public long idProductType { get; set; }
+        public Brand brand { get; set; }
+        public ProductType productType { get; set; }
         public List<DetailProduct> detailProductsList { get; set; }
-
+        public string nameBrand { get => this.brand.nameBrand; }
+        public string nameProductType { get => this.productType.nameProductType; }
         public Product()
         {
             //empty for framework
@@ -44,8 +44,6 @@ namespace Entities
             return "Product{" +
                     "idProduct='" + idProduct + '\'' +
                     ", nameProduct='" + nameProduct + '\'' +
-                    ", idBrand=" + idBrand +
-                    ", detailProductsList=" + detailProductsList +
                     '}';
         }
     }

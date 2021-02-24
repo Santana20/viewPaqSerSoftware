@@ -76,8 +76,8 @@ namespace Entities
             this.idProduct = product.idProduct;
             this.idDetailProduct = detailProduct.idDetailProduct;
             this.description = string.Concat(
-                product.nameProduct, " / ", product.idBrand,
-                " / ", product.idProductType, ".");
+                product.nameProduct, " / ", product.brand.nameBrand,
+                " / ", product.productType.nameProductType, ".");
             this.priceUnit = detailProduct.salePrice;
             this.saleCount = saleCount;
             this.Stock = detailProduct.stock;

@@ -64,8 +64,8 @@ namespace viewPaqSerSoftware
                 {
                     idProduct = txtIdProduct.Text,
                     nameProduct = txtNameProduct.Text,
-                    idBrand = (long)cmbIdBrand.SelectedValue,
-                    idProductType = (long)cmbProductType.SelectedValue
+                    brand = new Brand { idBrand = (long)cmbIdBrand.SelectedValue },
+                    productType = new ProductType { idProductType = (long)cmbProductType.SelectedValue }
                 };
 
                 Product responseProduct = await ProductService.RegisterProduct(product);
@@ -92,7 +92,7 @@ namespace viewPaqSerSoftware
 
                 else
                 {
-                    string parametros = String.Empty;
+                    string parametros = string.Empty;
                     List<string> requestParams = new List<string>();
                     if (txtNameProduct.Text != string.Empty) 
                         requestParams.Add("name=" + txtNameProduct.Text);
@@ -107,7 +107,7 @@ namespace viewPaqSerSoftware
                         parametros += requestParams[i];
                     }
 
-                    dgvProducts.DataSource = await ProductService.SearchProducts(parametros);
+                    this.dgvProducts.DataSource = await ProductService.SearchProducts(parametros);
                 }
 
             }
