@@ -25,10 +25,25 @@ namespace viewPaqSerSoftware.Forms
         }
         private void FormSales_Load(object sender, EventArgs e)
         {
+            this.LoadTheme();
             this.source = new BindingList<CartItem>(this.carrito.getList());
             this.dgvCart.DataSource = this.source;
+            this.lblTotalCart.Text = Convert.ToString(this.carrito.total);
         }
-
+        private void LoadTheme()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)control;
+                    btn.BackColor = ThemeColor.primaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
+                }
+            }
+            this.dgvCart.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
+        }
         private void btnUpdateDS_Click(object sender, EventArgs e)
         {
             try
@@ -49,6 +64,7 @@ namespace viewPaqSerSoftware.Forms
                 {
                     this.carrito.UpdateSaleCountByIndex(index, frmModifySaleCount.value);
                     this.source.ResetItem(index);
+                    this.lblTotalCart.Text = Convert.ToString(this.carrito.total);
 
                     FormSuccess.ConfirmationForm("MODIFICADO");
                 }
@@ -75,6 +91,7 @@ namespace viewPaqSerSoftware.Forms
                     int index = this.dgvCart.CurrentRow.Index;
                     this.carrito.DeleteCartItem(index, detailProduct.idDetailProduct);
                     this.source.ResetBindings();
+                    this.lblTotalCart.Text = Convert.ToString(this.carrito.total);
 
                     FormSuccess.ConfirmationForm("ELIMINADO");
                 }
@@ -112,6 +129,7 @@ namespace viewPaqSerSoftware.Forms
                 this.carrito.GenerateNewList();
                 this.dgvCart.DataSource = null;
                 this.txtNameClient.Text = string.Empty;
+                this.lblTotalCart.Text = string.Empty;
                 this.txtNameClient.Focus();
             }
             catch (Exception ex)
