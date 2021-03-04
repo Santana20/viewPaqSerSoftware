@@ -33,7 +33,8 @@ namespace viewPaqSerSoftware
                     btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
                 }
             }
-            dgvProductDetails.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
+            this.dgvProductDetails.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
+            this.dgvProducts.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
         }
         private async void Form1_Load(object sender, EventArgs e)
         {
@@ -132,21 +133,6 @@ namespace viewPaqSerSoftware
 
         #endregion
 
-        private void dgvProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
-                {
-                    this.currentProductSelected = (Product)dgvProducts.Rows[e.RowIndex].DataBoundItem;
-                    dgvProductDetails.DataSource = this.currentProductSelected.detailProductsList;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
         private void btnAddDPToCart_Click(object sender, EventArgs e)
         {
             try
@@ -164,6 +150,23 @@ namespace viewPaqSerSoftware
                 FormSuccess.ConfirmationForm("AGREGADO");
             }
             catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (this.dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
+                {
+                    string idProduct = (string)this.dgvProducts.Rows[e.RowIndex].Cells["idProduct"].Value;
+                    this.dgvProductDetails.DataSource = await DetailProductService.ListDetailProductByIdProduct(idProduct);
+                    this.currentProductSelected = (Product)this.dgvProducts.Rows[e.RowIndex].DataBoundItem;
+                }
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }

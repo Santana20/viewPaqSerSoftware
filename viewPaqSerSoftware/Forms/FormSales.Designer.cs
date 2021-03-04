@@ -30,12 +30,6 @@
         {
             this.txtNameClient = new System.Windows.Forms.TextBox();
             this.lblnameClient = new System.Windows.Forms.Label();
-            this.dgvCart = new System.Windows.Forms.DataGridView();
-            this.idProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.priceUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.saleCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblSaleDetails = new System.Windows.Forms.Label();
             this.btnUpdateDS = new System.Windows.Forms.Button();
             this.btnDeleteDS = new System.Windows.Forms.Button();
@@ -43,6 +37,15 @@
             this.btnAddDS = new System.Windows.Forms.Button();
             this.lblTitleTotal = new System.Windows.Forms.Label();
             this.lblTotalCart = new System.Windows.Forms.Label();
+            this.lblTitleIGV = new System.Windows.Forms.Label();
+            this.lblTitleSaleValue = new System.Windows.Forms.Label();
+            this.dgvCart = new System.Windows.Forms.DataGridView();
+            this.saleCount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.saleUnit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,76 +68,6 @@
             this.lblnameClient.Size = new System.Drawing.Size(128, 17);
             this.lblnameClient.TabIndex = 1;
             this.lblnameClient.Text = "Nombre del Cliente";
-            // 
-            // dgvCart
-            // 
-            this.dgvCart.AllowUserToAddRows = false;
-            this.dgvCart.AllowUserToDeleteRows = false;
-            this.dgvCart.AllowUserToOrderColumns = true;
-            this.dgvCart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvCart.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dgvCart.BackgroundColor = System.Drawing.Color.White;
-            this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvCart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dgvCart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            this.dgvCart.ColumnHeadersHeight = 29;
-            this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idProduct,
-            this.description,
-            this.priceUnit,
-            this.saleCount,
-            this.subTotal});
-            this.dgvCart.Location = new System.Drawing.Point(40, 172);
-            this.dgvCart.Name = "dgvCart";
-            this.dgvCart.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvCart.RowHeadersVisible = false;
-            this.dgvCart.RowHeadersWidth = 51;
-            this.dgvCart.RowTemplate.Height = 24;
-            this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(777, 336);
-            this.dgvCart.TabIndex = 2;
-            // 
-            // idProduct
-            // 
-            this.idProduct.DataPropertyName = "idProduct";
-            this.idProduct.HeaderText = "Codigo";
-            this.idProduct.MinimumWidth = 6;
-            this.idProduct.Name = "idProduct";
-            this.idProduct.ReadOnly = true;
-            // 
-            // description
-            // 
-            this.description.DataPropertyName = "description";
-            this.description.HeaderText = "Descripcion";
-            this.description.MinimumWidth = 6;
-            this.description.Name = "description";
-            this.description.ReadOnly = true;
-            // 
-            // priceUnit
-            // 
-            this.priceUnit.DataPropertyName = "priceUnit";
-            this.priceUnit.HeaderText = "Precio Unitario";
-            this.priceUnit.MinimumWidth = 6;
-            this.priceUnit.Name = "priceUnit";
-            this.priceUnit.ReadOnly = true;
-            // 
-            // saleCount
-            // 
-            this.saleCount.DataPropertyName = "saleCount";
-            this.saleCount.HeaderText = "Cantidad";
-            this.saleCount.MinimumWidth = 6;
-            this.saleCount.Name = "saleCount";
-            this.saleCount.ReadOnly = true;
-            // 
-            // subTotal
-            // 
-            this.subTotal.DataPropertyName = "subTotal";
-            this.subTotal.HeaderText = "SubTotal";
-            this.subTotal.MinimumWidth = 6;
-            this.subTotal.Name = "subTotal";
-            this.subTotal.ReadOnly = true;
             // 
             // lblSaleDetails
             // 
@@ -204,7 +137,7 @@
             this.lblTitleTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitleTotal.AutoSize = true;
             this.lblTitleTotal.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleTotal.Location = new System.Drawing.Point(618, 527);
+            this.lblTitleTotal.Location = new System.Drawing.Point(614, 591);
             this.lblTitleTotal.Name = "lblTitleTotal";
             this.lblTitleTotal.Size = new System.Drawing.Size(77, 28);
             this.lblTitleTotal.TabIndex = 8;
@@ -215,17 +148,121 @@
             this.lblTotalCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalCart.AutoSize = true;
             this.lblTotalCart.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCart.Location = new System.Drawing.Point(701, 527);
+            this.lblTotalCart.Location = new System.Drawing.Point(743, 591);
             this.lblTotalCart.Name = "lblTotalCart";
             this.lblTotalCart.Size = new System.Drawing.Size(56, 28);
             this.lblTotalCart.TabIndex = 9;
             this.lblTotalCart.Text = "0.00";
             // 
+            // lblTitleIGV
+            // 
+            this.lblTitleIGV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitleIGV.AutoSize = true;
+            this.lblTitleIGV.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleIGV.Location = new System.Drawing.Point(564, 551);
+            this.lblTitleIGV.Name = "lblTitleIGV";
+            this.lblTitleIGV.Size = new System.Drawing.Size(127, 28);
+            this.lblTitleIGV.TabIndex = 10;
+            this.lblTitleIGV.Text = "IGV(18%):";
+            // 
+            // lblTitleSaleValue
+            // 
+            this.lblTitleSaleValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTitleSaleValue.AutoSize = true;
+            this.lblTitleSaleValue.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleSaleValue.Location = new System.Drawing.Point(511, 511);
+            this.lblTitleSaleValue.Name = "lblTitleSaleValue";
+            this.lblTitleSaleValue.Size = new System.Drawing.Size(182, 28);
+            this.lblTitleSaleValue.TabIndex = 11;
+            this.lblTitleSaleValue.Text = "Valor de venta:";
+            // 
+            // dgvCart
+            // 
+            this.dgvCart.AllowUserToAddRows = false;
+            this.dgvCart.AllowUserToDeleteRows = false;
+            this.dgvCart.AllowUserToOrderColumns = true;
+            this.dgvCart.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvCart.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvCart.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvCart.BackgroundColor = System.Drawing.Color.White;
+            this.dgvCart.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvCart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dgvCart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            this.dgvCart.ColumnHeadersHeight = 29;
+            this.dgvCart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.saleCount,
+            this.saleUnit,
+            this.idProduct,
+            this.description,
+            this.unitPrice,
+            this.subTotal});
+            this.dgvCart.Location = new System.Drawing.Point(40, 173);
+            this.dgvCart.Name = "dgvCart";
+            this.dgvCart.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvCart.RowHeadersVisible = false;
+            this.dgvCart.RowHeadersWidth = 51;
+            this.dgvCart.RowTemplate.Height = 24;
+            this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvCart.Size = new System.Drawing.Size(777, 309);
+            this.dgvCart.TabIndex = 12;
+            // 
+            // saleCount
+            // 
+            this.saleCount.DataPropertyName = "count";
+            this.saleCount.HeaderText = "Cantidad";
+            this.saleCount.MinimumWidth = 6;
+            this.saleCount.Name = "saleCount";
+            this.saleCount.ReadOnly = true;
+            // 
+            // saleUnit
+            // 
+            this.saleUnit.DataPropertyName = "saleUnit";
+            this.saleUnit.HeaderText = "Unidad de medida";
+            this.saleUnit.MinimumWidth = 6;
+            this.saleUnit.Name = "saleUnit";
+            this.saleUnit.ReadOnly = true;
+            // 
+            // idProduct
+            // 
+            this.idProduct.DataPropertyName = "idProduct";
+            this.idProduct.HeaderText = "Codigo";
+            this.idProduct.MinimumWidth = 6;
+            this.idProduct.Name = "idProduct";
+            this.idProduct.ReadOnly = true;
+            // 
+            // description
+            // 
+            this.description.DataPropertyName = "description";
+            this.description.HeaderText = "Descripcion";
+            this.description.MinimumWidth = 6;
+            this.description.Name = "description";
+            this.description.ReadOnly = true;
+            // 
+            // unitPrice
+            // 
+            this.unitPrice.DataPropertyName = "unitPrice";
+            this.unitPrice.HeaderText = "Precio Unitario";
+            this.unitPrice.MinimumWidth = 6;
+            this.unitPrice.Name = "unitPrice";
+            this.unitPrice.ReadOnly = true;
+            // 
+            // subTotal
+            // 
+            this.subTotal.DataPropertyName = "subTotal";
+            this.subTotal.HeaderText = "SubTotal";
+            this.subTotal.MinimumWidth = 6;
+            this.subTotal.Name = "subTotal";
+            this.subTotal.ReadOnly = true;
+            // 
             // FormSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(854, 564);
+            this.ClientSize = new System.Drawing.Size(854, 668);
+            this.Controls.Add(this.dgvCart);
+            this.Controls.Add(this.lblTitleSaleValue);
+            this.Controls.Add(this.lblTitleIGV);
             this.Controls.Add(this.lblTotalCart);
             this.Controls.Add(this.lblTitleTotal);
             this.Controls.Add(this.btnRegisterSale);
@@ -233,7 +270,6 @@
             this.Controls.Add(this.btnUpdateDS);
             this.Controls.Add(this.btnAddDS);
             this.Controls.Add(this.lblSaleDetails);
-            this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.lblnameClient);
             this.Controls.Add(this.txtNameClient);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -250,18 +286,21 @@
 
         private System.Windows.Forms.TextBox txtNameClient;
         private System.Windows.Forms.Label lblnameClient;
-        private System.Windows.Forms.DataGridView dgvCart;
         private System.Windows.Forms.Label lblSaleDetails;
         private System.Windows.Forms.Button btnUpdateDS;
         private System.Windows.Forms.Button btnDeleteDS;
         private System.Windows.Forms.Button btnRegisterSale;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProduct;
-        private System.Windows.Forms.DataGridViewTextBoxColumn description;
-        private System.Windows.Forms.DataGridViewTextBoxColumn priceUnit;
-        private System.Windows.Forms.DataGridViewTextBoxColumn saleCount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
         private System.Windows.Forms.Button btnAddDS;
         private System.Windows.Forms.Label lblTitleTotal;
         private System.Windows.Forms.Label lblTotalCart;
+        private System.Windows.Forms.Label lblTitleIGV;
+        private System.Windows.Forms.Label lblTitleSaleValue;
+        private System.Windows.Forms.DataGridView dgvCart;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saleCount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn saleUnit;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
     }
 }

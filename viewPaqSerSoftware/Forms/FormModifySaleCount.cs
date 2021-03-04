@@ -26,7 +26,7 @@ namespace viewPaqSerSoftware.Forms
         {
             try
             {
-                value = Convert.ToInt32(this.txtSaleCount.Text);
+                value = Convert.ToDecimal(this.txtSaleCount.Text);
                 if (value > this.currentItem.Stock)
                     throw new ArgumentException("La cantidad no puede ser mayor al stock disponible.\n" +
                         "Stock disponible para el producto actual: " + this.currentItem.Stock.ToString());

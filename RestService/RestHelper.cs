@@ -92,7 +92,6 @@ namespace RestService
         }
         public async static Task<R> MakePost<T, R>(string url, T obj)
         {
-            
             try
             {
                 using (HttpClient client = new HttpClient())
@@ -103,7 +102,7 @@ namespace RestService
                                                             System.Text.Encoding.UTF8,
                                                             mediaType);
                     var httpResponse = await client.PostAsync(urlBase + url, content);
-                    
+
                     if (httpResponse.IsSuccessStatusCode)
                     {
                         var result = await httpResponse.Content.ReadAsStringAsync();
@@ -111,15 +110,13 @@ namespace RestService
                         R resultJson = JsonSerializer.Deserialize<R>(result);
                         return resultJson;
                     }
+                    else throw new Exception("Error de servidor: " + httpResponse.StatusCode.ToString());
                 }
             }
             catch (Exception e)
             {
                 throw new ApplicationException(e.Message);
             }
-
-
-            return default;
         }
     }
     public static class BrandService
@@ -157,13 +154,39 @@ namespace RestService
             return await Rest.MakeGet<List<Product>>(urlSearchProducts + parametros);
         }
     }
-
+    public static class DetailProductService
+    {
+        private const string urlDetailProduct = "/detailProduct";
+        private const string urlListDPByIdProduct = urlDetailProduct + "/listDP";
+        public async static Task<List<DetailProduct>> ListDetailProductByIdProduct(string idProduct)
+        {
+            return await Rest.MakeGet<List<DetailProduct>>(urlListDPByIdProduct + "/" + idProduct);
+        }
+    }
     public static class SaleService
     {
-        private const string urlRegisterSale = "/sale";
+        private const string urlSale = "/sale";
+        private const string urlRegisterSale = urlSale;
+        private const string urlListSale = urlSale + "/list";
         public async static Task<Sale> RegisterSale(Sale sale)
         {
             return await Rest.MakePost<Sale, Sale>(urlRegisterSale, sale);
+        }
+        public async static Task<List<Sale>> ListSales(string day = default)
+        {
+            string url = urlListSale;
+            if (day != default)
+                url += ("?day=" + day);
+            return await Rest.MakeGet<List<Sale>>(url);
+        }
+    }
+    public static class DetailSaleService
+    {
+        private const string urlDetailSale = "/detailSale";
+        private const string urlListDetailSaleByIdSale = urlDetailSale + "/listDS";
+        public async static Task<List<CartItem>> ListDetailSaleLikeCartItemByIdSale(long idSale)
+        {
+            return await Rest.MakeGet<List<CartItem>>(urlListDetailSaleByIdSale + "/" + idSale.ToString());
         }
     }
 }

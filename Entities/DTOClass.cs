@@ -28,7 +28,7 @@ namespace Entities
         }
         public void UpdateSaleCountByIndex(int index, decimal saleCount)
         {
-            this.cartItems[index].saleCount = saleCount;
+            this.cartItems[index].count = saleCount;
             total -= this.cartItems[index].subTotal;
             this.cartItems[index].UpdateSubTotal();
             total += this.cartItems[index].subTotal;
@@ -58,14 +58,16 @@ namespace Entities
         {
             this.cartItems = new List<CartItem>();
             this.validateList = new SortedSet<long>();
+            this.total = 0.00m;
         }
     }
     public class CartItem
     {
         public string idProduct { get; set; }
         public string description { get; set; }
-        public decimal priceUnit { get; set; }
-        public decimal saleCount { get; set; }
+        public decimal unitPrice { get; set; }
+        public string saleUnit { get; set; }
+        public decimal count { get; set; }
         public decimal subTotal { get; set; }
         public long idDetailProduct { get; set; }
         public decimal Stock { get; }
@@ -76,10 +78,11 @@ namespace Entities
             this.idProduct = product.idProduct;
             this.idDetailProduct = detailProduct.idDetailProduct;
             this.description = string.Concat(
-                product.nameProduct, " / ", product.brand.nameBrand,
-                " / ", product.productType.nameProductType, ".");
-            this.priceUnit = detailProduct.salePrice;
-            this.saleCount = saleCount;
+                product.nameProduct, " / ", product.nameBrand,
+                " / ", product.nameProductType, " / ", detailProduct.netContent);
+            this.unitPrice = detailProduct.salePrice;
+            this.saleUnit = detailProduct.saleUnit;
+            this.count = saleCount;
             this.Stock = detailProduct.stock;
             this.UpdateSubTotal();
         }
@@ -87,15 +90,15 @@ namespace Entities
         {
             DetailSale detailSale = new DetailSale()
             {
-                saleCount = this.saleCount,
+                saleCount = this.count,
                 subTotal = this.subTotal,
-                idDetailProduct = this.idDetailProduct
+                detailProduct = new DetailProduct { idDetailProduct = this.idDetailProduct }
             };
             return detailSale;
         }
         public void UpdateSubTotal()
         {
-            this.subTotal = this.priceUnit * this.saleCount;
+            this.subTotal = this.unitPrice * this.count;
         }
     }
 }

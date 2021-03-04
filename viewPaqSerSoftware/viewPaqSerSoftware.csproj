@@ -83,6 +83,12 @@
     <Compile Include="Forms\FormInformation.Designer.cs">
       <DependentUpon>FormInformation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormListSales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormListSales.Designer.cs">
+      <DependentUpon>FormListSales.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormModifySaleCount.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,12 @@
     <Compile Include="Forms\FormSuccess.Designer.cs">
       <DependentUpon>FormSuccess.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormVisualizerPDF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormVisualizerPDF.Designer.cs">
+      <DependentUpon>FormVisualizerPDF.cs</DependentUpon>
+    </Compile>
     <Compile Include="HomeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +131,9 @@
     <EmbeddedResource Include="Forms\FormInformation.resx">
       <DependentUpon>FormInformation.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormListSales.resx">
+      <DependentUpon>FormListSales.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormModifySaleCount.resx">
       <DependentUpon>FormModifySaleCount.cs</DependentUpon>
     </EmbeddedResource>
@@ -130,6 +145,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSuccess.resx">
       <DependentUpon>FormSuccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormVisualizerPDF.resx">
+      <DependentUpon>FormVisualizerPDF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="HomeForm.resx">
       <DependentUpon>HomeForm.cs</DependentUpon>

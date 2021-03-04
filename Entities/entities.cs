@@ -31,13 +31,12 @@ namespace Entities
         public Brand brand { get; set; }
         public ProductType productType { get; set; }
         public List<DetailProduct> detailProductsList { get; set; }
-        public string nameBrand { get => this.brand.nameBrand; }
-        public string nameProductType { get => this.productType.nameProductType; }
+        public string nameBrand { get => getNameBrand(); }
+        public string nameProductType { get => getNameProductType(); }
         public Product()
         {
             //empty for framework
         }
-
         public override string ToString()
         {
             
@@ -45,6 +44,16 @@ namespace Entities
                     "idProduct='" + idProduct + '\'' +
                     ", nameProduct='" + nameProduct + '\'' +
                     '}';
+        }
+        private string getNameBrand()
+        {
+            if (this.brand == null) return null;
+            return this.brand.nameBrand;
+        }
+        private string getNameProductType()
+        {
+            if (this.productType == null) return null;
+            return this.productType.nameProductType;
         }
     }
     public class DetailProduct
@@ -54,7 +63,7 @@ namespace Entities
         public decimal stock { get; set; }
         public decimal salePrice { get; set; }
         public string saleUnit { get; set; }
-        public string idProduct { get; set; }
+        public Product product { get; set; }
         public DetailProduct()
         {
             //empty for framework
@@ -67,8 +76,12 @@ namespace Entities
                     ", stock=" + stock +
                     ", saleUnit='" + saleUnit + '\'' +
                     ", salePrice=" + salePrice +
-                    ", idProduct='" + idProduct + '\'' +
                     '}';
+        }
+        private string getidProduct()
+        {
+            if (this.product == null) return null;
+            return this.product.idProduct;
         }
     }
     public class Sale
@@ -99,8 +112,8 @@ namespace Entities
         public long idDetailSale { get; set; }
         public decimal saleCount { get; set; }
         public decimal subTotal { get; set; }
-        public long idDetailProduct { get; set; }
-        public long idSale { get; set; }
+        public DetailProduct detailProduct { get; set; }
+        public Sale sale { get; set; }
         public DetailSale()
         {
             // empty for framework
@@ -111,8 +124,6 @@ namespace Entities
                     "idDetailSale=" + idDetailSale +
                     ", saleCount=" + saleCount +
                     ", subTotal=" + subTotal +
-                    ", idDetailProduct=" + idDetailProduct +
-                    ", idSale=" + idSale +
                     '}';
         }
     }
