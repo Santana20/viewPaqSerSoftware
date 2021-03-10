@@ -101,17 +101,23 @@
     <Compile Include="Forms\FormProducts.Designer.cs">
       <DependentUpon>FormProducts.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormSales.cs">
+    <Compile Include="Forms\FormRegisterSale.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormSales.Designer.cs">
-      <DependentUpon>FormSales.cs</DependentUpon>
+    <Compile Include="Forms\FormRegisterSale.Designer.cs">
+      <DependentUpon>FormRegisterSale.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormSuccess.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormSuccess.Designer.cs">
       <DependentUpon>FormSuccess.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormSuccessRegisterSale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSuccessRegisterSale.Designer.cs">
+      <DependentUpon>FormSuccessRegisterSale.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormVisualizerPDF.cs">
       <SubType>Form</SubType>
@@ -140,11 +146,14 @@
     <EmbeddedResource Include="Forms\FormProducts.resx">
       <DependentUpon>FormProducts.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSales.resx">
-      <DependentUpon>FormSales.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormRegisterSale.resx">
+      <DependentUpon>FormRegisterSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSuccess.resx">
       <DependentUpon>FormSuccess.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSuccessRegisterSale.resx">
+      <DependentUpon>FormSuccessRegisterSale.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormVisualizerPDF.resx">
       <DependentUpon>FormVisualizerPDF.cs</DependentUpon>

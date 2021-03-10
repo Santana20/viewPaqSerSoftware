@@ -1,5 +1,5 @@
 ﻿using Entities;
-using RestService;
+using APIRestService;
 using System;
 using System.Collections.Generic;
 using System.Drawing;

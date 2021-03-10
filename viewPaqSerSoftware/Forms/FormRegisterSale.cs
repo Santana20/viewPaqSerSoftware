@@ -1,5 +1,5 @@
 ﻿using Entities;
-using RestService;
+using APIRestService;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +12,13 @@ using System.Windows.Forms;
 
 namespace viewPaqSerSoftware.Forms
 {
-    public partial class FormSales : Form
+    public partial class FormRegisterSale : Form
     {
         #region Atributtes
         public Cart carrito { get; set; }
         private BindingList<CartItem> source;
         #endregion
-        public FormSales()
+        public FormRegisterSale()
         {
             InitializeComponent();
             this.dgvCart.AutoGenerateColumns = false;
@@ -124,7 +124,14 @@ namespace viewPaqSerSoftware.Forms
                 };
                 Sale resultSale = await SaleService.RegisterSale(mySale);
 
-                FormSuccess.ConfirmationForm("Venta #" + resultSale.idSale);
+                DialogResult result = new DialogResult();
+                FormSuccessRegisterSale formSuccessRegisterSale = new FormSuccessRegisterSale("REGISTRADO");
+                result = formSuccessRegisterSale.ShowDialog(this);
+
+                if (result == DialogResult.Yes)
+                {
+                    SaleService.ExportInPDFDetailSaleLikeCartItemByIdSale(resultSale.idSale);
+                }
 
                 this.carrito.GenerateNewList();
                 this.dgvCart.DataSource = null;

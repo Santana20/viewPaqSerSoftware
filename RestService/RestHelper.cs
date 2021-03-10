@@ -7,62 +7,9 @@ using System.Threading.Tasks;
 using Entities;
 using System.Collections.Generic;
 
-namespace RestService
+namespace APIRestService
 {
-    /*
-    public class RestHelper
-    {
-        private const string baseUrl = "http://localhost:8080/api";
-        private const string createProductUrl = "/product";
-        public Product createProduct(Product product)
-        {
-            string productRequest = serializeObject(product);
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(baseUrl + createProductUrl);
-
-            request.Method = "POST";
-
-            if (productRequest != string.Empty)
-            {
-                request.ContentType = "application/json";
-                using (StreamWriter swJsonPayload = new StreamWriter(request.GetRequestStream()))
-                {
-                    swJsonPayload.Write(productRequest);
-                    swJsonPayload.Close();
-                }
-            }
-
-            Product productResponse = null;
-            try
-            {
-                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-                using (Stream responseStream = response.GetResponseStream())
-                {
-                    if (responseStream != null)
-                    {
-                        using (StreamReader reader = new StreamReader(responseStream))
-                        {
-                            productResponse = JsonConvert.DeserializeObject<Product>(reader.ReadToEnd());
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw new ApplicationException(e.Message);
-            }
-            return productResponse;
-        }
-
-
-        private string serializeObject(Object obj)
-        {
-            return JsonConvert.SerializeObject(obj);
-        }
-
-    }
-    */
-    public static class Rest
+    public static class RestService
     {
         private const string urlBase = "http://localhost:8080/api";
         public async static Task<T> MakeGet<T>(string url)
@@ -118,13 +65,14 @@ namespace RestService
                 throw new ApplicationException(e.Message);
             }
         }
+        public static void OpenLinkPDF(string url) => System.Diagnostics.Process.Start(urlBase + url);
     }
     public static class BrandService
     {
         private const string urlGetBrands = "/brands";
         public async static Task<List<Brand>> ListAllBrands()
         {
-            return await Rest.MakeGet<List<Brand>>(urlGetBrands);
+            return await RestService.MakeGet<List<Brand>>(urlGetBrands);
         }
     }
     public static class ProductTypeService
@@ -132,7 +80,7 @@ namespace RestService
         private const string urlGetProductTypes = "/productTypes";
         public async static Task<List<ProductType>> ListAllProductTypes()
         {
-            return await Rest.MakeGet<List<ProductType>>(urlGetProductTypes);
+            return await RestService.MakeGet<List<ProductType>>(urlGetProductTypes);
         }
     }
     public static class ProductService
@@ -141,17 +89,17 @@ namespace RestService
         private const string urlSearchProducts = "/product/search";
         public async static Task<Product> RegisterProduct(Product product)
         {
-            Product responseProduct = await Rest.MakePost<Product, Product>(urlCreateProduct, product);
+            Product responseProduct = await RestService.MakePost<Product, Product>(urlCreateProduct, product);
             if (responseProduct == null) throw new ApplicationException("Hubo un error al registrar el producto.");
             return responseProduct;
         }
         public async static Task<Product> FindByIdProduct(string idProduct)
         {
-            return await Rest.MakeGet<Product>(urlSearchProducts + "/" + idProduct);
+            return await RestService.MakeGet<Product>(urlSearchProducts + "/" + idProduct);
         }
         public async static Task<List<Product>> SearchProducts(string parametros)
         {
-            return await Rest.MakeGet<List<Product>>(urlSearchProducts + parametros);
+            return await RestService.MakeGet<List<Product>>(urlSearchProducts + parametros);
         }
     }
     public static class DetailProductService
@@ -160,24 +108,42 @@ namespace RestService
         private const string urlListDPByIdProduct = urlDetailProduct + "/listDP";
         public async static Task<List<DetailProduct>> ListDetailProductByIdProduct(string idProduct)
         {
-            return await Rest.MakeGet<List<DetailProduct>>(urlListDPByIdProduct + "/" + idProduct);
+            return await RestService.MakeGet<List<DetailProduct>>(urlListDPByIdProduct + "/" + idProduct);
         }
     }
     public static class SaleService
     {
         private const string urlSale = "/sale";
         private const string urlRegisterSale = urlSale;
-        private const string urlListSale = urlSale + "/list";
+        private const string urlListSaleByDate = urlSale + "/list";
+        private const string urlExportUniqueSaleInPDF = urlSale + "/export";
+        private const string urlExportPDFListSalesByDate = urlListSaleByDate + "/export";
         public async static Task<Sale> RegisterSale(Sale sale)
         {
-            return await Rest.MakePost<Sale, Sale>(urlRegisterSale, sale);
+            return await RestService.MakePost<Sale, Sale>(urlRegisterSale, sale);
         }
-        public async static Task<List<Sale>> ListSales(string day = default)
+        public async static Task<List<Sale>> ListSalesByDate(string day = default)
         {
-            string url = urlListSale;
+            string url = urlListSaleByDate;
             if (day != default)
                 url += ("?day=" + day);
-            return await Rest.MakeGet<List<Sale>>(url);
+            return await RestService.MakeGet<List<Sale>>(url);
+        }
+        public static void ExportInPDFDetailSaleLikeCartItemByIdSale(long idSale)
+        {
+            string url = urlExportUniqueSaleInPDF;
+            if (idSale != default)
+            {
+                url += ("?idSale=" + idSale);
+            }
+            RestService.OpenLinkPDF(url);
+        }
+        public static void ExportInPDFListSalesByDate(string day)
+        {
+            string url = urlExportPDFListSalesByDate;
+            if (day != default) url += ("?day=" + day);
+
+            RestService.OpenLinkPDF(url);
         }
     }
     public static class DetailSaleService
@@ -186,7 +152,7 @@ namespace RestService
         private const string urlListDetailSaleByIdSale = urlDetailSale + "/listDS";
         public async static Task<List<CartItem>> ListDetailSaleLikeCartItemByIdSale(long idSale)
         {
-            return await Rest.MakeGet<List<CartItem>>(urlListDetailSaleByIdSale + "/" + idSale.ToString());
+            return await RestService.MakeGet<List<CartItem>>(urlListDetailSaleByIdSale + "/" + idSale.ToString());
         }
     }
 }

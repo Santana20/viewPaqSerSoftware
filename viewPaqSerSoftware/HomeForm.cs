@@ -132,7 +132,7 @@ namespace viewPaqSerSoftware
         {
             if (activeForm == null || activeFormType != FormTypes.FormSales)
             {
-                FormSales formSales = new FormSales
+                FormRegisterSale formSales = new FormRegisterSale
                 {
                     carrito = this.carrito
                 };

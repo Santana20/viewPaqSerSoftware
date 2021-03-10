@@ -1,6 +1,6 @@
 ﻿namespace viewPaqSerSoftware.Forms
 {
-    partial class FormSales
+    partial class FormRegisterSale
     {
         /// <summary>
         /// Required designer variable.
