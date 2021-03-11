@@ -26,7 +26,8 @@ namespace Entities
     }
     public class Product
     {
-        public string idProduct { get; set; }
+        public long id { get; set; }
+        public string codProduct { get; set; }
         public string nameProduct { get; set; }
         public Brand brand { get; set; }
         public ProductType productType { get; set; }
@@ -41,7 +42,7 @@ namespace Entities
         {
             
             return "Product{" +
-                    "idProduct='" + idProduct + '\'' +
+                    "idProduct='" + codProduct + '\'' +
                     ", nameProduct='" + nameProduct + '\'' +
                     '}';
         }
@@ -81,7 +82,7 @@ namespace Entities
         private string getidProduct()
         {
             if (this.product == null) return null;
-            return this.product.idProduct;
+            return this.product.codProduct;
         }
     }
     public class Sale

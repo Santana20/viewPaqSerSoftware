@@ -15,8 +15,9 @@ namespace viewPaqSerSoftware
     public enum FormTypes
     {
         None,
-        FormProducts,
-        FormSales
+        FormListProducts,
+        FormRegisterSales,
+        FormListSales
     };
     public partial class HomeForm : Form
     {
@@ -36,14 +37,33 @@ namespace viewPaqSerSoftware
         public HomeForm()
         {
             InitializeComponent();
-            random = new Random();
-            carrito = new Cart();
-            btnCloseChildForm.Visible = false;
-            this.Text = String.Empty;
+            this.InitialConfigurationDesign();
         }
 
 
         #region MethodsDesigns
+        private void InitialConfigurationDesign()
+        {
+            random = new Random();
+            carrito = new Cart();
+            btnCloseChildForm.Visible = false;
+            this.Text = String.Empty;
+            this.MakeInvisibleSubPanels();
+        }
+        private void MakeInvisibleSubPanels()
+        {
+            this.pnlProductsSubMenu.Visible = false;
+            this.pnlSalesSubMenu.Visible = false;
+        }
+        private void ShowSubMenu(Panel subMenu)
+        {
+            if (subMenu.Visible == false)
+            {
+                this.MakeInvisibleSubPanels();
+                subMenu.Visible = true;
+            }
+            else subMenu.Visible = false;
+        }
         private Color SelectThemeColor()
         {
             int index = random.Next(ThemeColor.ColorList.Count);
@@ -77,7 +97,7 @@ namespace viewPaqSerSoftware
         private void DisableBeforeButton(Button previousBtn)
         {
             if (previousBtn == null) return;
-            previousBtn.BackColor = Color.FromArgb(51, 51, 76);
+            previousBtn.BackColor = Color.FromArgb(51, 53, 99);
             previousBtn.ForeColor = Color.Gainsboro;
             previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         }
@@ -90,10 +110,12 @@ namespace viewPaqSerSoftware
             currentButton = null;
             btnCloseChildForm.Visible = false;
             activeFormType = FormTypes.None;
-        } 
+        }
         #endregion
 
         #region principal
+
+        #region ChildFormsManagenment
         private void OpenChildForm(Form childForm, FormTypes formType, object btnSender)
         {
             if (activeForm != null)
@@ -115,41 +137,63 @@ namespace viewPaqSerSoftware
 
             lblTitleBar.Text = childForm.Text;
         }
-
-        private void btnMenuProducts_Click(object sender, EventArgs e)
-        {
-            if (activeForm == null || activeFormType != FormTypes.FormProducts)
-            {
-                FormProducts formProduct = new FormProducts
-                {
-                    carrito = this.carrito
-                };
-                OpenChildForm(formProduct, FormTypes.FormProducts, sender);
-            }
-        }
-
-        private void btnMenuSales_Click(object sender, EventArgs e)
-        {
-            if (activeForm == null || activeFormType != FormTypes.FormSales)
-            {
-                FormRegisterSale formSales = new FormRegisterSale
-                {
-                    carrito = this.carrito
-                };
-                OpenChildForm(formSales, FormTypes.FormSales, sender);
-            }
-        }
-        #endregion
-
         private void btnCloseChildForm_Click(object sender, EventArgs e)
         {
             if (activeForm != null) activeForm.Close();
             ResetFormStyle();
         }
+        #endregion
 
-        private void HomeForm_Load(object sender, EventArgs e)
+        #region ProductsRegion
+        private void btnMenuProducts_Click(object sender, EventArgs e)
         {
-
+            this.ShowSubMenu(this.pnlProductsSubMenu);   
         }
+        private void btnListProducts_Click(object sender, EventArgs e)
+        {
+            if (activeForm == null || activeFormType != FormTypes.FormListProducts)
+            {
+                FormListProducts formListProduct = new FormListProducts
+                {
+                    carrito = this.carrito
+                };
+                OpenChildForm(formListProduct, FormTypes.FormListProducts, sender);
+            }
+        }
+        #endregion
+
+        #region SalesRegion
+        private void btnMenuSales_Click(object sender, EventArgs e)
+        {
+            this.ShowSubMenu(this.pnlSalesSubMenu);
+        }
+        private void btnRegisterSale_Click(object sender, EventArgs e)
+        {
+            if (activeForm == null || activeFormType != FormTypes.FormRegisterSales)
+            {
+                FormRegisterSale formRegisterSales = new FormRegisterSale
+                {
+                    carrito = this.carrito
+                };
+                OpenChildForm(formRegisterSales, FormTypes.FormRegisterSales, sender);
+            }
+        }
+        private void btnListSales_Click(object sender, EventArgs e)
+        {
+            if (activeForm == null || activeFormType != FormTypes.FormListSales)
+            {
+                FormListSales formListSales = new FormListSales();
+                OpenChildForm(formListSales, FormTypes.FormListSales, sender);
+            }
+        }
+
+
+
+
+        #endregion
+
+        #endregion
+
+
     }
 }

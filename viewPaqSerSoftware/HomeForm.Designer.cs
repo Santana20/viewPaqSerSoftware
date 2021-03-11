@@ -29,55 +29,137 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pnlSalesSubMenu = new System.Windows.Forms.Panel();
+            this.btnListSales = new System.Windows.Forms.Button();
+            this.btnRegisterSale = new System.Windows.Forms.Button();
+            this.btnMenuSales = new System.Windows.Forms.Button();
+            this.pnlProductsSubMenu = new System.Windows.Forms.Panel();
+            this.btnListProducts = new System.Windows.Forms.Button();
+            this.btnMenuProducts = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblLogoName = new System.Windows.Forms.Label();
-            this.btnMenuProducts = new System.Windows.Forms.Button();
-            this.btnMenuSales = new System.Windows.Forms.Button();
             this.panelTitleBar = new System.Windows.Forms.Panel();
-            this.lblTitleBar = new System.Windows.Forms.Label();
             this.btnCloseChildForm = new System.Windows.Forms.Button();
+            this.lblTitleBar = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
             this.panelMenu.SuspendLayout();
+            this.pnlSalesSubMenu.SuspendLayout();
+            this.pnlProductsSubMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
-            this.panelDesktop.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
+            this.panelMenu.AutoScroll = true;
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.pnlSalesSubMenu);
             this.panelMenu.Controls.Add(this.btnMenuSales);
+            this.panelMenu.Controls.Add(this.pnlProductsSubMenu);
             this.panelMenu.Controls.Add(this.btnMenuProducts);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(199, 753);
+            this.panelMenu.Size = new System.Drawing.Size(246, 753);
             this.panelMenu.TabIndex = 1;
             // 
-            // panelLogo
+            // pnlSalesSubMenu
             // 
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.panelLogo.Controls.Add(this.lblLogoName);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(199, 74);
-            this.panelLogo.TabIndex = 3;
+            this.pnlSalesSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(53)))), ((int)(((byte)(99)))));
+            this.pnlSalesSubMenu.Controls.Add(this.btnListSales);
+            this.pnlSalesSubMenu.Controls.Add(this.btnRegisterSale);
+            this.pnlSalesSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSalesSubMenu.Location = new System.Drawing.Point(0, 250);
+            this.pnlSalesSubMenu.Name = "pnlSalesSubMenu";
+            this.pnlSalesSubMenu.Size = new System.Drawing.Size(246, 95);
+            this.pnlSalesSubMenu.TabIndex = 5;
             // 
-            // lblLogoName
+            // btnListSales
             // 
-            this.lblLogoName.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblLogoName.AutoSize = true;
-            this.lblLogoName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.lblLogoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogoName.ForeColor = System.Drawing.Color.LightGray;
-            this.lblLogoName.Location = new System.Drawing.Point(27, 24);
-            this.lblLogoName.Name = "lblLogoName";
-            this.lblLogoName.Size = new System.Drawing.Size(195, 29);
-            this.lblLogoName.TabIndex = 0;
-            this.lblLogoName.Text = "PaqSer Software";
-            this.lblLogoName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.btnListSales.AutoSize = true;
+            this.btnListSales.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListSales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnListSales.FlatAppearance.BorderSize = 0;
+            this.btnListSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListSales.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnListSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListSales.Location = new System.Drawing.Point(0, 45);
+            this.btnListSales.Name = "btnListSales";
+            this.btnListSales.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnListSales.Size = new System.Drawing.Size(246, 45);
+            this.btnListSales.TabIndex = 3;
+            this.btnListSales.Text = "Listar Ventas";
+            this.btnListSales.UseVisualStyleBackColor = true;
+            this.btnListSales.Click += new System.EventHandler(this.btnListSales_Click);
+            // 
+            // btnRegisterSale
+            // 
+            this.btnRegisterSale.AutoSize = true;
+            this.btnRegisterSale.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegisterSale.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegisterSale.FlatAppearance.BorderSize = 0;
+            this.btnRegisterSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterSale.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRegisterSale.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegisterSale.Location = new System.Drawing.Point(0, 0);
+            this.btnRegisterSale.Name = "btnRegisterSale";
+            this.btnRegisterSale.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnRegisterSale.Size = new System.Drawing.Size(246, 45);
+            this.btnRegisterSale.TabIndex = 2;
+            this.btnRegisterSale.Text = "Registrar Venta";
+            this.btnRegisterSale.UseVisualStyleBackColor = true;
+            this.btnRegisterSale.Click += new System.EventHandler(this.btnRegisterSale_Click);
+            // 
+            // btnMenuSales
+            // 
+            this.btnMenuSales.AutoSize = true;
+            this.btnMenuSales.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenuSales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMenuSales.FlatAppearance.BorderSize = 0;
+            this.btnMenuSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuSales.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMenuSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuSales.Location = new System.Drawing.Point(0, 185);
+            this.btnMenuSales.Name = "btnMenuSales";
+            this.btnMenuSales.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnMenuSales.Size = new System.Drawing.Size(246, 65);
+            this.btnMenuSales.TabIndex = 1;
+            this.btnMenuSales.Text = "Ventas";
+            this.btnMenuSales.UseVisualStyleBackColor = true;
+            this.btnMenuSales.Click += new System.EventHandler(this.btnMenuSales_Click);
+            // 
+            // pnlProductsSubMenu
+            // 
+            this.pnlProductsSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(53)))), ((int)(((byte)(99)))));
+            this.pnlProductsSubMenu.Controls.Add(this.btnListProducts);
+            this.pnlProductsSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlProductsSubMenu.Location = new System.Drawing.Point(0, 134);
+            this.pnlProductsSubMenu.Name = "pnlProductsSubMenu";
+            this.pnlProductsSubMenu.Size = new System.Drawing.Size(246, 51);
+            this.pnlProductsSubMenu.TabIndex = 4;
+            // 
+            // btnListProducts
+            // 
+            this.btnListProducts.AutoSize = true;
+            this.btnListProducts.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListProducts.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnListProducts.FlatAppearance.BorderSize = 0;
+            this.btnListProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListProducts.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnListProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListProducts.Location = new System.Drawing.Point(0, 0);
+            this.btnListProducts.Name = "btnListProducts";
+            this.btnListProducts.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnListProducts.Size = new System.Drawing.Size(246, 45);
+            this.btnListProducts.TabIndex = 2;
+            this.btnListProducts.Text = "Listar Productos";
+            this.btnListProducts.UseVisualStyleBackColor = true;
+            this.btnListProducts.Click += new System.EventHandler(this.btnListProducts_Click);
             // 
             // btnMenuProducts
             // 
@@ -91,53 +173,46 @@
             this.btnMenuProducts.Location = new System.Drawing.Point(0, 74);
             this.btnMenuProducts.Name = "btnMenuProducts";
             this.btnMenuProducts.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnMenuProducts.Size = new System.Drawing.Size(199, 60);
+            this.btnMenuProducts.Size = new System.Drawing.Size(246, 60);
             this.btnMenuProducts.TabIndex = 2;
             this.btnMenuProducts.Text = "Productos";
             this.btnMenuProducts.UseVisualStyleBackColor = true;
             this.btnMenuProducts.Click += new System.EventHandler(this.btnMenuProducts_Click);
             // 
-            // btnMenuSales
+            // panelLogo
             // 
-            this.btnMenuSales.AutoSize = true;
-            this.btnMenuSales.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenuSales.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMenuSales.FlatAppearance.BorderSize = 0;
-            this.btnMenuSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuSales.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMenuSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuSales.Location = new System.Drawing.Point(0, 134);
-            this.btnMenuSales.Name = "btnMenuSales";
-            this.btnMenuSales.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnMenuSales.Size = new System.Drawing.Size(199, 65);
-            this.btnMenuSales.TabIndex = 1;
-            this.btnMenuSales.Text = "Ventas";
-            this.btnMenuSales.UseVisualStyleBackColor = true;
-            this.btnMenuSales.Click += new System.EventHandler(this.btnMenuSales_Click);
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.panelLogo.Controls.Add(this.lblLogoName);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(246, 74);
+            this.panelLogo.TabIndex = 3;
+            // 
+            // lblLogoName
+            // 
+            this.lblLogoName.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblLogoName.AutoSize = true;
+            this.lblLogoName.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.lblLogoName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLogoName.ForeColor = System.Drawing.Color.LightGray;
+            this.lblLogoName.Location = new System.Drawing.Point(50, 24);
+            this.lblLogoName.Name = "lblLogoName";
+            this.lblLogoName.Size = new System.Drawing.Size(195, 29);
+            this.lblLogoName.TabIndex = 0;
+            this.lblLogoName.Text = "PaqSer Software";
+            this.lblLogoName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
             this.panelTitleBar.Controls.Add(this.btnCloseChildForm);
             this.panelTitleBar.Controls.Add(this.lblTitleBar);
-            this.panelTitleBar.Location = new System.Drawing.Point(199, 0);
+            this.panelTitleBar.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelTitleBar.Location = new System.Drawing.Point(246, 0);
             this.panelTitleBar.Name = "panelTitleBar";
-            this.panelTitleBar.Size = new System.Drawing.Size(983, 74);
+            this.panelTitleBar.Size = new System.Drawing.Size(936, 74);
             this.panelTitleBar.TabIndex = 2;
-            // 
-            // lblTitleBar
-            // 
-            this.lblTitleBar.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblTitleBar.AutoSize = true;
-            this.lblTitleBar.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleBar.ForeColor = System.Drawing.Color.White;
-            this.lblTitleBar.Location = new System.Drawing.Point(436, 24);
-            this.lblTitleBar.Name = "lblTitleBar";
-            this.lblTitleBar.Size = new System.Drawing.Size(96, 32);
-            this.lblTitleBar.TabIndex = 0;
-            this.lblTitleBar.Text = "HOME";
-            this.lblTitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnCloseChildForm
             // 
@@ -155,18 +230,29 @@
             this.btnCloseChildForm.UseVisualStyleBackColor = true;
             this.btnCloseChildForm.Click += new System.EventHandler(this.btnCloseChildForm_Click);
             // 
+            // lblTitleBar
+            // 
+            this.lblTitleBar.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblTitleBar.AutoSize = true;
+            this.lblTitleBar.Font = new System.Drawing.Font("Arial", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitleBar.ForeColor = System.Drawing.Color.White;
+            this.lblTitleBar.Location = new System.Drawing.Point(413, 24);
+            this.lblTitleBar.Name = "lblTitleBar";
+            this.lblTitleBar.Size = new System.Drawing.Size(96, 32);
+            this.lblTitleBar.TabIndex = 0;
+            this.lblTitleBar.Text = "HOME";
+            this.lblTitleBar.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // panelDesktop
             // 
             this.panelDesktop.AutoScroll = true;
-            this.panelDesktop.Controls.Add(this.panelTitleBar);
-            this.panelDesktop.Controls.Add(this.panelMenu);
             this.panelDesktop.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panelDesktop.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktop.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelDesktop.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.panelDesktop.Location = new System.Drawing.Point(0, 0);
+            this.panelDesktop.Location = new System.Drawing.Point(246, 74);
             this.panelDesktop.Name = "panelDesktop";
-            this.panelDesktop.Size = new System.Drawing.Size(1182, 753);
+            this.panelDesktop.Size = new System.Drawing.Size(936, 679);
             this.panelDesktop.TabIndex = 3;
             // 
             // HomeForm
@@ -175,6 +261,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 753);
             this.Controls.Add(this.panelDesktop);
+            this.Controls.Add(this.panelTitleBar);
+            this.Controls.Add(this.panelMenu);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -182,14 +270,16 @@
             this.Name = "HomeForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Inicio";
-            this.Load += new System.EventHandler(this.HomeForm_Load);
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
+            this.pnlSalesSubMenu.ResumeLayout(false);
+            this.pnlSalesSubMenu.PerformLayout();
+            this.pnlProductsSubMenu.ResumeLayout(false);
+            this.pnlProductsSubMenu.PerformLayout();
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
-            this.panelDesktop.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -205,5 +295,10 @@
         private System.Windows.Forms.Button btnCloseChildForm;
         private System.Windows.Forms.Label lblTitleBar;
         private System.Windows.Forms.Panel panelDesktop;
+        private System.Windows.Forms.Panel pnlProductsSubMenu;
+        private System.Windows.Forms.Button btnListProducts;
+        private System.Windows.Forms.Panel pnlSalesSubMenu;
+        private System.Windows.Forms.Button btnListSales;
+        private System.Windows.Forms.Button btnRegisterSale;
     }
 }

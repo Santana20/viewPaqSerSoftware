@@ -17,7 +17,7 @@ namespace viewPaqSerSoftware
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormVisualizerPDF());
+            Application.Run(new HomeForm());
         }
     }
 }

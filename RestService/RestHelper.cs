@@ -106,9 +106,9 @@ namespace APIRestService
     {
         private const string urlDetailProduct = "/detailProduct";
         private const string urlListDPByIdProduct = urlDetailProduct + "/listDP";
-        public async static Task<List<DetailProduct>> ListDetailProductByIdProduct(string idProduct)
+        public async static Task<List<DetailProduct>> ListDetailProductByIdProduct(long idProduct)
         {
-            return await RestService.MakeGet<List<DetailProduct>>(urlListDPByIdProduct + "/" + idProduct);
+            return await RestService.MakeGet<List<DetailProduct>>(urlListDPByIdProduct + "/" + idProduct.ToString());
         }
     }
     public static class SaleService

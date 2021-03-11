@@ -8,13 +8,13 @@ using viewPaqSerSoftware.Forms;
 
 namespace viewPaqSerSoftware
 {
-    public partial class FormProducts : Form
+    public partial class FormListProducts : Form
     {
         #region Attributes
         public Cart carrito { get; set; }
         private Product currentProductSelected;
         #endregion
-        public FormProducts()
+        public FormListProducts()
         {
             InitializeComponent();
             dgvProducts.AutoGenerateColumns = false;
@@ -36,11 +36,11 @@ namespace viewPaqSerSoftware
             this.dgvProductDetails.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
             this.dgvProducts.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
         }
-        private async void Form1_Load(object sender, EventArgs e)
+        private async void FormProducts_Load(object sender, EventArgs e)
         {
             try
             {
-                LoadTheme();
+                this.LoadTheme();
                 cmbIdBrand.DataSource = await BrandService.ListAllBrands();
                 cmbProductType.DataSource = await ProductTypeService.ListAllProductTypes();
 
@@ -63,7 +63,7 @@ namespace viewPaqSerSoftware
             {
                 Product product = new Product
                 {
-                    idProduct = txtIdProduct.Text,
+                    codProduct = txtIdProduct.Text,
                     nameProduct = txtNameProduct.Text,
                     brand = new Brand { idBrand = (long)cmbIdBrand.SelectedValue },
                     productType = new ProductType { idProductType = (long)cmbProductType.SelectedValue }
@@ -161,7 +161,7 @@ namespace viewPaqSerSoftware
             {
                 if (this.dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
                 {
-                    string idProduct = (string)this.dgvProducts.Rows[e.RowIndex].Cells["idProduct"].Value;
+                    long idProduct = (this.dgvProducts.Rows[e.RowIndex].DataBoundItem as Product).id;
                     this.dgvProductDetails.DataSource = await DetailProductService.ListDetailProductByIdProduct(idProduct);
                     this.currentProductSelected = (Product)this.dgvProducts.Rows[e.RowIndex].DataBoundItem;
                 }

@@ -63,7 +63,7 @@ namespace Entities
     }
     public class CartItem
     {
-        public string idProduct { get; set; }
+        public string codProduct { get; set; }
         public string description { get; set; }
         public decimal unitPrice { get; set; }
         public string saleUnit { get; set; }
@@ -75,7 +75,7 @@ namespace Entities
         public CartItem(Product product, DetailProduct detailProduct,
             decimal saleCount = 0m)
         {
-            this.idProduct = product.idProduct;
+            this.codProduct = product.codProduct;
             this.idDetailProduct = detailProduct.idDetailProduct;
             this.description = string.Concat(
                 product.nameProduct, " / ", product.nameBrand,

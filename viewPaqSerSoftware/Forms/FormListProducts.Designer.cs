@@ -1,6 +1,6 @@
 ﻿namespace viewPaqSerSoftware
 {
-    partial class FormProducts
+    partial class FormListProducts
     {
         /// <summary>
         /// Variable del diseñador necesaria.
@@ -30,7 +30,7 @@
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormProducts));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListProducts));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreateProduct = new System.Windows.Forms.Button();
@@ -46,7 +46,7 @@
             this.btnRegisterBrand = new System.Windows.Forms.Button();
             this.btnRegisterProductType = new System.Windows.Forms.Button();
             this.dgvProducts = new System.Windows.Forms.DataGridView();
-            this.idProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameProduct = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Brand = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ProductType = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -96,7 +96,7 @@
             // 
             this.lbl_Brand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Brand.AutoSize = true;
-            this.lbl_Brand.Location = new System.Drawing.Point(532, 25);
+            this.lbl_Brand.Location = new System.Drawing.Point(463, 25);
             this.lbl_Brand.Name = "lbl_Brand";
             this.lbl_Brand.Size = new System.Drawing.Size(47, 17);
             this.lbl_Brand.TabIndex = 3;
@@ -120,7 +120,7 @@
             // 
             this.lbl_idProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_idProductType.AutoSize = true;
-            this.lbl_idProductType.Location = new System.Drawing.Point(532, 62);
+            this.lbl_idProductType.Location = new System.Drawing.Point(463, 62);
             this.lbl_idProductType.Name = "lbl_idProductType";
             this.lbl_idProductType.Size = new System.Drawing.Size(116, 17);
             this.lbl_idProductType.TabIndex = 7;
@@ -131,7 +131,7 @@
             this.cmbProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProductType.FormattingEnabled = true;
-            this.cmbProductType.Location = new System.Drawing.Point(680, 60);
+            this.cmbProductType.Location = new System.Drawing.Point(611, 60);
             this.cmbProductType.Name = "cmbProductType";
             this.cmbProductType.Size = new System.Drawing.Size(168, 24);
             this.cmbProductType.TabIndex = 3;
@@ -141,7 +141,7 @@
             this.cmbIdBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbIdBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdBrand.FormattingEnabled = true;
-            this.cmbIdBrand.Location = new System.Drawing.Point(680, 21);
+            this.cmbIdBrand.Location = new System.Drawing.Point(611, 21);
             this.cmbIdBrand.Name = "cmbIdBrand";
             this.cmbIdBrand.Size = new System.Drawing.Size(168, 24);
             this.cmbIdBrand.TabIndex = 2;
@@ -162,7 +162,7 @@
             // 
             this.btnRegisterBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegisterBrand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterBrand.Location = new System.Drawing.Point(854, 21);
+            this.btnRegisterBrand.Location = new System.Drawing.Point(785, 21);
             this.btnRegisterBrand.Name = "btnRegisterBrand";
             this.btnRegisterBrand.Size = new System.Drawing.Size(34, 24);
             this.btnRegisterBrand.TabIndex = 6;
@@ -173,7 +173,7 @@
             // 
             this.btnRegisterProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegisterProductType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterProductType.Location = new System.Drawing.Point(854, 62);
+            this.btnRegisterProductType.Location = new System.Drawing.Point(785, 62);
             this.btnRegisterProductType.Name = "btnRegisterProductType";
             this.btnRegisterProductType.Size = new System.Drawing.Size(34, 24);
             this.btnRegisterProductType.TabIndex = 7;
@@ -195,7 +195,7 @@
             this.dgvProducts.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idProduct,
+            this.codigo,
             this.nameProduct,
             this.Brand,
             this.ProductType,
@@ -218,17 +218,17 @@
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(830, 283);
+            this.dgvProducts.Size = new System.Drawing.Size(761, 256);
             this.dgvProducts.TabIndex = 8;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             // 
-            // idProduct
+            // codigo
             // 
-            this.idProduct.DataPropertyName = "idProduct";
-            this.idProduct.HeaderText = "Codigo";
-            this.idProduct.MinimumWidth = 6;
-            this.idProduct.Name = "idProduct";
-            this.idProduct.ReadOnly = true;
+            this.codigo.DataPropertyName = "codProduct";
+            this.codigo.HeaderText = "Codigo";
+            this.codigo.MinimumWidth = 6;
+            this.codigo.Name = "codigo";
+            this.codigo.ReadOnly = true;
             // 
             // nameProduct
             // 
@@ -304,14 +304,14 @@
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle8;
             this.dgvProductDetails.EnableHeadersVisualStyles = false;
-            this.dgvProductDetails.Location = new System.Drawing.Point(58, 486);
+            this.dgvProductDetails.Location = new System.Drawing.Point(58, 454);
             this.dgvProductDetails.Name = "dgvProductDetails";
             this.dgvProductDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductDetails.RowHeadersVisible = false;
             this.dgvProductDetails.RowHeadersWidth = 51;
             this.dgvProductDetails.RowTemplate.Height = 24;
             this.dgvProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductDetails.Size = new System.Drawing.Size(830, 295);
+            this.dgvProductDetails.Size = new System.Drawing.Size(761, 312);
             this.dgvProductDetails.TabIndex = 9;
             // 
             // codProduct
@@ -358,7 +358,7 @@
             // 
             this.btnAddDPToCart.AutoEllipsis = true;
             this.btnAddDPToCart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDPToCart.Location = new System.Drawing.Point(58, 801);
+            this.btnAddDPToCart.Location = new System.Drawing.Point(58, 790);
             this.btnAddDPToCart.Name = "btnAddDPToCart";
             this.btnAddDPToCart.Size = new System.Drawing.Size(115, 44);
             this.btnAddDPToCart.TabIndex = 10;
@@ -366,12 +366,12 @@
             this.btnAddDPToCart.UseVisualStyleBackColor = true;
             this.btnAddDPToCart.Click += new System.EventHandler(this.btnAddDPToCart_Click);
             // 
-            // FormProducts
+            // FormListProducts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(961, 870);
+            this.ClientSize = new System.Drawing.Size(976, 679);
             this.Controls.Add(this.btnAddDPToCart);
             this.Controls.Add(this.dgvProductDetails);
             this.Controls.Add(this.dgvProducts);
@@ -388,9 +388,9 @@
             this.Controls.Add(this.lbl_idProduct);
             this.Controls.Add(this.btnCreateProduct);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "FormProducts";
-            this.Text = "Productos";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Name = "FormListProducts";
+            this.Text = "Listar Productos";
+            this.Load += new System.EventHandler(this.FormProducts_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).EndInit();
             this.ResumeLayout(false);
@@ -420,7 +420,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn salePrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn saleUnit;
         private System.Windows.Forms.Button btnAddDPToCart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idProduct;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn nameProduct;
         private System.Windows.Forms.DataGridViewTextBoxColumn Brand;
         private System.Windows.Forms.DataGridViewTextBoxColumn ProductType;

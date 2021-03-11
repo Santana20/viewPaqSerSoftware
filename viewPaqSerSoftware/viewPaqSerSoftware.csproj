@@ -95,11 +95,11 @@
     <Compile Include="Forms\FormModifySaleCount.Designer.cs">
       <DependentUpon>FormModifySaleCount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormProducts.cs">
+    <Compile Include="Forms\FormListProducts.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormProducts.Designer.cs">
-      <DependentUpon>FormProducts.cs</DependentUpon>
+    <Compile Include="Forms\FormListProducts.Designer.cs">
+      <DependentUpon>FormListProducts.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormRegisterSale.cs">
       <SubType>Form</SubType>
@@ -143,8 +143,8 @@
     <EmbeddedResource Include="Forms\FormModifySaleCount.resx">
       <DependentUpon>FormModifySaleCount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormProducts.resx">
-      <DependentUpon>FormProducts.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormListProducts.resx">
+      <DependentUpon>FormListProducts.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormRegisterSale.resx">
       <DependentUpon>FormRegisterSale.cs</DependentUpon>
