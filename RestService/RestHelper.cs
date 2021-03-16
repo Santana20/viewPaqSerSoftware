@@ -65,6 +65,22 @@ namespace APIRestService
                 throw new ApplicationException(e.Message);
             }
         }
+        public async static Task MakePut(string url)
+        {
+            try
+            {
+                using (HttpClient client = new HttpClient())
+                {
+                    var httpResponse = await client.PutAsync(urlBase + url, null);
+                    if (!httpResponse.IsSuccessStatusCode)
+                        throw new ApplicationException("Hubo un error.");
+                }
+            }
+            catch (Exception e)
+            {
+                throw new ApplicationException(e.Message);
+            }
+        }
         public static void OpenLinkPDF(string url) => System.Diagnostics.Process.Start(urlBase + url);
     }
     public static class BrandService
@@ -118,6 +134,7 @@ namespace APIRestService
         private const string urlListSaleByDate = urlSale + "/list";
         private const string urlExportUniqueSaleInPDF = urlSale + "/export";
         private const string urlExportPDFListSalesByDate = urlListSaleByDate + "/export";
+        private const string urlCancelSaleByIdSale = urlSale + "/cancel";
         public async static Task<Sale> RegisterSale(Sale sale)
         {
             return await RestService.MakePost<Sale, Sale>(urlRegisterSale, sale);
@@ -144,6 +161,11 @@ namespace APIRestService
             if (day != default) url += ("?day=" + day);
 
             RestService.OpenLinkPDF(url);
+        }
+        public async static Task<bool> CancelSaleByIdSale(long idSale)
+        {
+            await RestService.MakePut(urlCancelSaleByIdSale + '/' + idSale.ToString());
+            return true;
         }
     }
     public static class DetailSaleService

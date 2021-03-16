@@ -91,6 +91,8 @@ namespace Entities
         public string nameClient { get; set; }
         public DateTime dateSale { get; set; }
         public decimal total { get; set; }
+        public bool status { get; set; }
+        public string statusString { get => this.getStatusToString(); }
         public List<DetailSale> detailSaleList { get; set; }
         public Sale()
         {
@@ -106,6 +108,11 @@ namespace Entities
                 ", detailSaleList=" + detailSaleList +
                 ", total=" + total +
                 '}';
+        }
+        private string getStatusToString()
+        {
+            if (this.status) return "NORMAL";
+            return "ANULADO";
         }
     }
     public class DetailSale

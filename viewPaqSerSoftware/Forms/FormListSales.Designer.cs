@@ -41,14 +41,16 @@
             this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSales = new System.Windows.Forms.DataGridView();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.btnVisualizeSaleInPDF = new System.Windows.Forms.Button();
             this.idSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailSale = new System.Windows.Forms.DataGridViewImageColumn();
             this.PDFView = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.btnVisualizeSaleInPDF = new System.Windows.Forms.Button();
+            this.cancelSale = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailsSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             this.SuspendLayout();
@@ -172,8 +174,10 @@
             this.nameClient,
             this.dateSale,
             this.total,
+            this.status,
             this.DetailSale,
-            this.PDFView});
+            this.PDFView,
+            this.cancelSale});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -197,6 +201,26 @@
             this.dgvSales.Size = new System.Drawing.Size(857, 252);
             this.dgvSales.TabIndex = 9;
             this.dgvSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSales_CellContentClick);
+            // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(42, 36);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(47, 17);
+            this.lblDate.TabIndex = 10;
+            this.lblDate.Text = "Fecha\r\n";
+            // 
+            // btnVisualizeSaleInPDF
+            // 
+            this.btnVisualizeSaleInPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVisualizeSaleInPDF.Location = new System.Drawing.Point(472, 25);
+            this.btnVisualizeSaleInPDF.Name = "btnVisualizeSaleInPDF";
+            this.btnVisualizeSaleInPDF.Size = new System.Drawing.Size(140, 44);
+            this.btnVisualizeSaleInPDF.TabIndex = 11;
+            this.btnVisualizeSaleInPDF.Text = "Ver en PDF";
+            this.btnVisualizeSaleInPDF.UseVisualStyleBackColor = true;
+            this.btnVisualizeSaleInPDF.Click += new System.EventHandler(this.btnVisualizeSaleInPDF_Click);
             // 
             // idSale
             // 
@@ -230,6 +254,14 @@
             this.total.Name = "total";
             this.total.ReadOnly = true;
             // 
+            // status
+            // 
+            this.status.DataPropertyName = "statusString";
+            this.status.HeaderText = "Estado";
+            this.status.MinimumWidth = 6;
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            // 
             // DetailSale
             // 
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
@@ -249,25 +281,12 @@
             this.PDFView.Name = "PDFView";
             this.PDFView.ReadOnly = true;
             // 
-            // lblDate
+            // cancelSale
             // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(42, 36);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(47, 17);
-            this.lblDate.TabIndex = 10;
-            this.lblDate.Text = "Fecha\r\n";
-            // 
-            // btnVisualizeSaleInPDF
-            // 
-            this.btnVisualizeSaleInPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVisualizeSaleInPDF.Location = new System.Drawing.Point(472, 25);
-            this.btnVisualizeSaleInPDF.Name = "btnVisualizeSaleInPDF";
-            this.btnVisualizeSaleInPDF.Size = new System.Drawing.Size(140, 44);
-            this.btnVisualizeSaleInPDF.TabIndex = 11;
-            this.btnVisualizeSaleInPDF.Text = "Ver en PDF";
-            this.btnVisualizeSaleInPDF.UseVisualStyleBackColor = true;
-            this.btnVisualizeSaleInPDF.Click += new System.EventHandler(this.btnVisualizeSaleInPDF_Click);
+            this.cancelSale.HeaderText = "Anular";
+            this.cancelSale.MinimumWidth = 6;
+            this.cancelSale.Name = "cancelSale";
+            this.cancelSale.ReadOnly = true;
             // 
             // FormListSales
             // 
@@ -307,7 +326,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn nameClient;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateSale;
         private System.Windows.Forms.DataGridViewTextBoxColumn total;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
         private System.Windows.Forms.DataGridViewImageColumn DetailSale;
         private System.Windows.Forms.DataGridViewImageColumn PDFView;
+        private System.Windows.Forms.DataGridViewImageColumn cancelSale;
     }
 }

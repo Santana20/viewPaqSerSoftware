@@ -44,17 +44,35 @@ namespace viewPaqSerSoftware.Forms
             {
                 if (this.dgvSales.Rows[e.RowIndex].Cells["DetailSale"].Selected)
                 {
-                    this.PaintRowAndUnpaintLastValidRow(e.RowIndex);
+                    this.PaintRowAndUnpaintLastSelectedRow(e.RowIndex);
 
                     long idSale = (long)this.dgvSales.Rows[e.RowIndex].Cells["idSale"].Value;
                     this.dgvDetailsSale.DataSource = await DetailSaleService.ListDetailSaleLikeCartItemByIdSale(idSale);
                 }
                 else if (this.dgvSales.Rows[e.RowIndex].Cells["PDFView"].Selected)
                 {
-                    this.PaintRowAndUnpaintLastValidRow(e.RowIndex);
+                    this.PaintRowAndUnpaintLastSelectedRow(e.RowIndex);
 
                     long idSale = (long)this.dgvSales.Rows[e.RowIndex].Cells["idSale"].Value;
                     SaleService.ExportInPDFDetailSaleLikeCartItemByIdSale(idSale);
+                }
+                else if (this.dgvSales.Rows[e.RowIndex].Cells["cancelSale"].Selected)
+                {
+                    this.PaintRowAndUnpaintLastSelectedRow(e.RowIndex);
+
+                    DialogResult result = new DialogResult();
+                    FormInformation formInformation = new FormInformation("¿ESTAS SEGURO DE ANULAR LA VENTA?");
+                    result = formInformation.ShowDialog();
+
+                    if (result == DialogResult.OK)
+                    {
+                        long idSale = (long)this.dgvSales.Rows[e.RowIndex].Cells["idSale"].Value;
+                        if (await SaleService.CancelSaleByIdSale(idSale))
+                        {
+                            FormSuccess.ConfirmationForm("ANULADO");
+                        }
+                    }
+
                 }
             }
             catch (Exception ex)
@@ -81,7 +99,7 @@ namespace viewPaqSerSoftware.Forms
 
         // Manejo visual de la seleccion de toda la fila cuando se selecciona determinadas celdas de la fila.
         #region VisualRowsManagements
-        private void PaintRowAndUnpaintLastValidRow(int currentRowIndex)
+        private void PaintRowAndUnpaintLastSelectedRow(int currentRowIndex)
         {
             if (this.lastRowSelected > -1 && this.lastRowSelected < this.dgvSales.Rows.Count)
                 this.dgvSales.Rows[this.lastRowSelected].DefaultCellStyle.BackColor = this.dgvSales.DefaultCellStyle.BackColor;
