@@ -15,8 +15,8 @@ namespace viewPaqSerSoftware.Forms
     public partial class FormRegisterSale : Form
     {
         #region Atributtes
-        public Cart carrito { get; set; }
-        private BindingList<CartItem> source;
+        public CartDetailSale cartDetailSale { get; set; }
+        private BindingList<CartDetailSaleItem> sourceList;
         #endregion
         public FormRegisterSale()
         {
@@ -26,9 +26,9 @@ namespace viewPaqSerSoftware.Forms
         private void FormSales_Load(object sender, EventArgs e)
         {
             this.LoadTheme();
-            this.source = new BindingList<CartItem>(this.carrito.getList());
-            this.dgvCart.DataSource = this.source;
-            this.lblTotalCart.Text = Convert.ToString(this.carrito.total);
+            this.sourceList = new BindingList<CartDetailSaleItem>(this.cartDetailSale.getList());
+            this.dgvCart.DataSource = this.sourceList;
+            this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
         }
         private void LoadTheme()
         {
@@ -57,14 +57,14 @@ namespace viewPaqSerSoftware.Forms
 
                 DialogResult result = new DialogResult();
                 FormModifySaleCount frmModifySaleCount = new FormModifySaleCount(
-                    "Ingrese la cantidad", this.carrito.GetByIndex(index));
+                    "Ingrese la cantidad", this.cartDetailSale.GetByIndex(index));
                 result = frmModifySaleCount.ShowDialog(this);
 
                 if (result == DialogResult.OK)
                 {
-                    this.carrito.UpdateSaleCountByIndex(index, frmModifySaleCount.value);
-                    this.source.ResetItem(index);
-                    this.lblTotalCart.Text = Convert.ToString(this.carrito.total);
+                    this.cartDetailSale.UpdateSaleCountByIndex(index, frmModifySaleCount.value);
+                    this.sourceList.ResetItem(index);
+                    this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
 
                     FormSuccess.ConfirmationForm("MODIFICADO");
                 }
@@ -87,11 +87,11 @@ namespace viewPaqSerSoftware.Forms
                 result = formInformation.ShowDialog();
                 if (result == DialogResult.OK)
                 {
-                    CartItem detailProduct = this.dgvCart.CurrentRow.DataBoundItem as CartItem;
+                    CartDetailSaleItem detailProduct = this.dgvCart.CurrentRow.DataBoundItem as CartDetailSaleItem;
                     int index = this.dgvCart.CurrentRow.Index;
-                    this.carrito.DeleteCartItem(index, detailProduct.idDetailProduct);
-                    this.source.ResetBindings();
-                    this.lblTotalCart.Text = Convert.ToString(this.carrito.total);
+                    this.cartDetailSale.DeleteCartItem(index, detailProduct.idDetailProduct);
+                    this.sourceList.ResetBindings();
+                    this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
 
                     FormSuccess.ConfirmationForm("ELIMINADO");
                 }
@@ -104,7 +104,17 @@ namespace viewPaqSerSoftware.Forms
 
         private void btnAddDS_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Dirijase al menu de productos para agregar.");
+            try
+            {
+                FormAddProductForSaleOrPurchase frmSearchProduct = new FormAddProductForSaleOrPurchase("Venta", FormTypes.FormRegisterSales);
+                frmSearchProduct.cartDetailSale = this.cartDetailSale;
+                frmSearchProduct.ShowDialog(this);
+                this.sourceList.ResetBindings();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private async void btnRegisterSale_Click(object sender, EventArgs e)
@@ -113,14 +123,14 @@ namespace viewPaqSerSoftware.Forms
             {
                 if (txtNameClient.Text == string.Empty)
                     throw new ArgumentNullException("Debe ingresar el nombre del cliente.");
-                if (this.carrito.getCount() == 0)
+                if (this.cartDetailSale.getCount() == 0)
                     throw new ArgumentException("Debe registrar como minimo 1 producto a vender para realizar la venta");
 
                 Sale mySale = new Sale
                 {
                     nameClient = txtNameClient.Text,
-                    detailSaleList = this.carrito.ToDetailSaleList(),
-                    total = this.carrito.total
+                    detailSaleList = this.cartDetailSale.ToDetailSaleList(),
+                    total = this.cartDetailSale.total
                 };
                 Sale resultSale = await SaleService.RegisterSale(mySale);
 
@@ -133,16 +143,22 @@ namespace viewPaqSerSoftware.Forms
                     SaleService.ExportInPDFDetailSaleLikeCartItemByIdSale(resultSale.idSale);
                 }
 
-                this.carrito.GenerateNewList();
-                this.dgvCart.DataSource = null;
-                this.txtNameClient.Text = string.Empty;
-                this.lblTotalCart.Text = string.Empty;
-                this.txtNameClient.Focus();
+                this.ResetRegisterConfiguration();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ResetRegisterConfiguration()
+        {
+            this.cartDetailSale.GenerateNewList();
+            this.sourceList = new BindingList<CartDetailSaleItem>(this.cartDetailSale.getList());
+            this.dgvCart.DataSource = this.sourceList;
+            this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
+            this.txtNameClient.Text = string.Empty;
+            this.txtNameClient.Focus();
         }
     }
 }

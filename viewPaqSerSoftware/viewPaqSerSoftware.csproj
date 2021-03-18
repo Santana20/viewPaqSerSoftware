@@ -77,11 +77,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\FormAddProductForSaleOrPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddProductForSaleOrPurchase.Designer.cs">
+      <DependentUpon>FormAddProductForSaleOrPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormInformation.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FormInformation.Designer.cs">
       <DependentUpon>FormInformation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormListPurchases.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormListPurchases.Designer.cs">
+      <DependentUpon>FormListPurchases.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormListSales.cs">
       <SubType>Form</SubType>
@@ -101,6 +113,12 @@
     <Compile Include="Forms\FormListProducts.Designer.cs">
       <DependentUpon>FormListProducts.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormRegisterPurchase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormRegisterPurchase.Designer.cs">
+      <DependentUpon>FormRegisterPurchase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormRegisterSale.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -119,6 +137,12 @@
     <Compile Include="Forms\FormSuccessRegisterSale.Designer.cs">
       <DependentUpon>FormSuccessRegisterSale.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormUpdateCartDetailPurchaseItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormUpdateCartDetailPurchaseItem.Designer.cs">
+      <DependentUpon>FormUpdateCartDetailPurchaseItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormVisualizerPDF.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -134,8 +158,14 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeColor.cs" />
+    <EmbeddedResource Include="Forms\FormAddProductForSaleOrPurchase.resx">
+      <DependentUpon>FormAddProductForSaleOrPurchase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormInformation.resx">
       <DependentUpon>FormInformation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormListPurchases.resx">
+      <DependentUpon>FormListPurchases.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormListSales.resx">
       <DependentUpon>FormListSales.cs</DependentUpon>
@@ -146,6 +176,9 @@
     <EmbeddedResource Include="Forms\FormListProducts.resx">
       <DependentUpon>FormListProducts.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormRegisterPurchase.resx">
+      <DependentUpon>FormRegisterPurchase.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormRegisterSale.resx">
       <DependentUpon>FormRegisterSale.cs</DependentUpon>
     </EmbeddedResource>
@@ -154,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormSuccessRegisterSale.resx">
       <DependentUpon>FormSuccessRegisterSale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormUpdateCartDetailPurchaseItem.resx">
+      <DependentUpon>FormUpdateCartDetailPurchaseItem.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormVisualizerPDF.resx">
       <DependentUpon>FormVisualizerPDF.cs</DependentUpon>

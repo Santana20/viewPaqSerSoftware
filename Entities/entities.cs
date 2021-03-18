@@ -135,4 +135,30 @@ namespace Entities
                     '}';
         }
     }
+    public class Purchase
+    {
+        public long idPurchase { get; set; }
+        public DateTime datePurchase { get; set; }
+        public decimal total { get; set; }
+        public string ruc { get; set; }
+        public List<DetailPurchase> detailPurchaseList { get; set; }
+        public Purchase()
+        {
+            // empty for JSON converter
+        }
+    }
+    public class DetailPurchase
+    {
+        public long idDetailPurchase { get; set; }
+        public decimal quantity { get; set; }
+        public decimal unitPrice { get; set; }
+        public decimal subTotal { get; set; }
+        public DetailProduct detailProduct { get; set; }
+        public Purchase purchase { get; set; }
+        public DetailPurchase()
+        {
+            // empty for JSON converter
+        }
+    }
+
 }

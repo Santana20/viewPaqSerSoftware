@@ -11,8 +11,9 @@ namespace viewPaqSerSoftware
     public partial class FormListProducts : Form
     {
         #region Attributes
-        public Cart carrito { get; set; }
+        public CartDetailSale carrito { get; set; }
         private Product currentProductSelected;
+        private int lastRowSelected = -1;
         #endregion
         public FormListProducts()
         {
@@ -110,6 +111,7 @@ namespace viewPaqSerSoftware
 
                     this.dgvProducts.DataSource = await ProductService.SearchProducts(parametros);
                 }
+                this.UpdateLastRowIndexSelected(-1);
 
             }
             catch (Exception ex)
@@ -130,7 +132,18 @@ namespace viewPaqSerSoftware
             cmbIdBrand.SelectedIndex = -1;
             cmbProductType.SelectedIndex = -1;
         }
+        // Manejo visual de la seleccion de toda la fila cuando se selecciona determinadas celdas de la fila.
+        #region VisualRowsManagements
+        private void PaintRowAndUnpaintLastSelectedRow(int currentRowIndex)
+        {
+            if (this.lastRowSelected > -1 && this.lastRowSelected < this.dgvProducts.Rows.Count)
+                this.dgvProducts.Rows[this.lastRowSelected].DefaultCellStyle.BackColor = this.dgvProducts.DefaultCellStyle.BackColor;
 
+            this.UpdateLastRowIndexSelected(currentRowIndex);
+            this.dgvProducts.Rows[currentRowIndex].DefaultCellStyle.BackColor = this.dgvProducts.DefaultCellStyle.SelectionBackColor;
+        }
+        private void UpdateLastRowIndexSelected(int currentRowIndex) => this.lastRowSelected = currentRowIndex;
+        #endregion
         #endregion
 
         private void btnAddDPToCart_Click(object sender, EventArgs e)
@@ -144,7 +157,7 @@ namespace viewPaqSerSoftware
 
                 foreach (DataGridViewRow detailProduct in this.dgvProductDetails.SelectedRows)
                 {
-                    this.carrito.AddCartItem(new CartItem(currentProductSelected, 
+                    this.carrito.AddCartItem(new CartDetailSaleItem(currentProductSelected, 
                                             (DetailProduct)detailProduct.DataBoundItem));
                 }
                 FormSuccess.ConfirmationForm("AGREGADO");
@@ -161,6 +174,8 @@ namespace viewPaqSerSoftware
             {
                 if (this.dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
                 {
+                    this.PaintRowAndUnpaintLastSelectedRow(e.RowIndex);
+
                     long idProduct = (this.dgvProducts.Rows[e.RowIndex].DataBoundItem as Product).id;
                     this.dgvProductDetails.DataSource = await DetailProductService.ListDetailProductByIdProduct(idProduct);
                     this.currentProductSelected = (Product)this.dgvProducts.Rows[e.RowIndex].DataBoundItem;

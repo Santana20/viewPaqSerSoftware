@@ -15,9 +15,12 @@ namespace viewPaqSerSoftware
     public enum FormTypes
     {
         None,
+        HomeForm,
         FormListProducts,
         FormRegisterSales,
-        FormListSales
+        FormListSales,
+        FormRegisterPurchase,
+        FormListPurchases
     };
     public partial class HomeForm : Form
     {
@@ -31,12 +34,15 @@ namespace viewPaqSerSoftware
         
         private Form activeForm;
         private FormTypes activeFormType;
-        private Cart carrito;
+        private CartDetailSale cartDetailSale;
+        private CartDetailPurchase cartDetailPurchase;
         #endregion
 
         public HomeForm()
         {
             InitializeComponent();
+            this.cartDetailSale = new CartDetailSale();
+            this.cartDetailPurchase = new CartDetailPurchase();
             this.InitialConfigurationDesign();
         }
 
@@ -45,7 +51,7 @@ namespace viewPaqSerSoftware
         private void InitialConfigurationDesign()
         {
             random = new Random();
-            carrito = new Cart();
+            
             btnCloseChildForm.Visible = false;
             this.Text = String.Empty;
             this.MakeInvisibleSubPanels();
@@ -54,6 +60,7 @@ namespace viewPaqSerSoftware
         {
             this.pnlProductsSubMenu.Visible = false;
             this.pnlSalesSubMenu.Visible = false;
+            this.pnlPurchaseSubMenu.Visible = false;
         }
         private void ShowSubMenu(Panel subMenu)
         {
@@ -155,7 +162,7 @@ namespace viewPaqSerSoftware
             {
                 FormListProducts formListProduct = new FormListProducts
                 {
-                    carrito = this.carrito
+                    carrito = this.cartDetailSale
                 };
                 OpenChildForm(formListProduct, FormTypes.FormListProducts, sender);
             }
@@ -173,7 +180,7 @@ namespace viewPaqSerSoftware
             {
                 FormRegisterSale formRegisterSales = new FormRegisterSale
                 {
-                    carrito = this.carrito
+                    cartDetailSale = this.cartDetailSale
                 };
                 OpenChildForm(formRegisterSales, FormTypes.FormRegisterSales, sender);
             }
@@ -186,14 +193,36 @@ namespace viewPaqSerSoftware
                 OpenChildForm(formListSales, FormTypes.FormListSales, sender);
             }
         }
+        #endregion
 
+        #region PurchaseRegion
+        private void btnMenuPurchase_Click(object sender, EventArgs e)
+        {
+            this.ShowSubMenu(this.pnlPurchaseSubMenu);
+        }
 
+        private void btnRegisterPurchase_Click(object sender, EventArgs e)
+        {
+            if (activeForm == null || activeFormType != FormTypes.FormRegisterPurchase)
+            {
+                FormRegisterPurchase formRegisterPurchase = new FormRegisterPurchase(this.cartDetailPurchase);
+                
+                OpenChildForm(formRegisterPurchase, FormTypes.FormRegisterPurchase, sender);
+                formRegisterPurchase.LoadTheme();
+            }
+        }
 
+        private void btnListPurchases_Click(object sender, EventArgs e)
+        {
+            if (activeForm == null || activeFormType != FormTypes.FormListPurchases)
+            {
+                FormListPurchases formListPurchases = new FormListPurchases();
+                OpenChildForm(formListPurchases, FormTypes.FormListPurchases, sender);
+            }
+        }
 
         #endregion
 
         #endregion
-
-
     }
 }

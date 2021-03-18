@@ -55,7 +55,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNameClient.Location = new System.Drawing.Point(171, 19);
             this.txtNameClient.Name = "txtNameClient";
-            this.txtNameClient.Size = new System.Drawing.Size(642, 22);
+            this.txtNameClient.Size = new System.Drawing.Size(602, 22);
             this.txtNameClient.TabIndex = 0;
             // 
             // lblnameClient
@@ -85,7 +85,7 @@
             this.btnUpdateDS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnUpdateDS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnUpdateDS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnUpdateDS.Location = new System.Drawing.Point(702, 108);
+            this.btnUpdateDS.Location = new System.Drawing.Point(662, 108);
             this.btnUpdateDS.Name = "btnUpdateDS";
             this.btnUpdateDS.Size = new System.Drawing.Size(111, 46);
             this.btnUpdateDS.TabIndex = 5;
@@ -98,7 +98,7 @@
             this.btnDeleteDS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnDeleteDS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDeleteDS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDeleteDS.Location = new System.Drawing.Point(828, 108);
+            this.btnDeleteDS.Location = new System.Drawing.Point(788, 108);
             this.btnDeleteDS.Name = "btnDeleteDS";
             this.btnDeleteDS.Size = new System.Drawing.Size(111, 46);
             this.btnDeleteDS.TabIndex = 6;
@@ -111,7 +111,7 @@
             this.btnRegisterSale.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegisterSale.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegisterSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterSale.Location = new System.Drawing.Point(828, 9);
+            this.btnRegisterSale.Location = new System.Drawing.Point(788, 9);
             this.btnRegisterSale.Name = "btnRegisterSale";
             this.btnRegisterSale.Size = new System.Drawing.Size(111, 42);
             this.btnRegisterSale.TabIndex = 7;
@@ -124,7 +124,7 @@
             this.btnAddDS.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAddDS.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddDS.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddDS.Location = new System.Drawing.Point(574, 108);
+            this.btnAddDS.Location = new System.Drawing.Point(534, 108);
             this.btnAddDS.Name = "btnAddDS";
             this.btnAddDS.Size = new System.Drawing.Size(111, 46);
             this.btnAddDS.TabIndex = 4;
@@ -137,7 +137,7 @@
             this.lblTitleTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitleTotal.AutoSize = true;
             this.lblTitleTotal.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleTotal.Location = new System.Drawing.Point(736, 591);
+            this.lblTitleTotal.Location = new System.Drawing.Point(696, 591);
             this.lblTitleTotal.Name = "lblTitleTotal";
             this.lblTitleTotal.Size = new System.Drawing.Size(77, 28);
             this.lblTitleTotal.TabIndex = 8;
@@ -148,7 +148,7 @@
             this.lblTotalCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalCart.AutoSize = true;
             this.lblTotalCart.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCart.Location = new System.Drawing.Point(865, 591);
+            this.lblTotalCart.Location = new System.Drawing.Point(825, 591);
             this.lblTotalCart.Name = "lblTotalCart";
             this.lblTotalCart.Size = new System.Drawing.Size(56, 28);
             this.lblTotalCart.TabIndex = 9;
@@ -159,7 +159,7 @@
             this.lblTitleIGV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitleIGV.AutoSize = true;
             this.lblTitleIGV.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleIGV.Location = new System.Drawing.Point(686, 551);
+            this.lblTitleIGV.Location = new System.Drawing.Point(646, 551);
             this.lblTitleIGV.Name = "lblTitleIGV";
             this.lblTitleIGV.Size = new System.Drawing.Size(127, 28);
             this.lblTitleIGV.TabIndex = 10;
@@ -170,7 +170,7 @@
             this.lblTitleSaleValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTitleSaleValue.AutoSize = true;
             this.lblTitleSaleValue.Font = new System.Drawing.Font("Century", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitleSaleValue.Location = new System.Drawing.Point(633, 511);
+            this.lblTitleSaleValue.Location = new System.Drawing.Point(593, 511);
             this.lblTitleSaleValue.Name = "lblTitleSaleValue";
             this.lblTitleSaleValue.Size = new System.Drawing.Size(182, 28);
             this.lblTitleSaleValue.TabIndex = 11;
@@ -204,7 +204,7 @@
             this.dgvCart.RowHeadersWidth = 51;
             this.dgvCart.RowTemplate.Height = 24;
             this.dgvCart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvCart.Size = new System.Drawing.Size(899, 309);
+            this.dgvCart.Size = new System.Drawing.Size(859, 309);
             this.dgvCart.TabIndex = 12;
             // 
             // saleCount
@@ -258,7 +258,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 679);
+            this.ClientSize = new System.Drawing.Size(936, 679);
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.lblTitleSaleValue);
             this.Controls.Add(this.lblTitleIGV);

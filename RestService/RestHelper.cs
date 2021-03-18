@@ -172,9 +172,37 @@ namespace APIRestService
     {
         private const string urlDetailSale = "/detailSale";
         private const string urlListDetailSaleByIdSale = urlDetailSale + "/listDS";
-        public async static Task<List<CartItem>> ListDetailSaleLikeCartItemByIdSale(long idSale)
+        public async static Task<List<CartDetailSaleItem>> ListDetailSaleLikeCartItemByIdSale(long idSale)
         {
-            return await RestService.MakeGet<List<CartItem>>(urlListDetailSaleByIdSale + "/" + idSale.ToString());
+            return await RestService.MakeGet<List<CartDetailSaleItem>>(urlListDetailSaleByIdSale + "/" + idSale.ToString());
+        }
+    }
+
+    public static class PurchaseService
+    {
+        private const string urlPurchase = "/purchase";
+        private const string urlRegisterPurchase = urlPurchase;
+        private const string urlListPurchases = urlPurchase + "/list";
+        public async static Task<Purchase> RegisterPurchase(Purchase purchase)
+        {
+            return await RestService.MakePost<Purchase, Purchase>(urlRegisterPurchase, purchase);
+        }
+        public async static Task<List<Purchase>> ListPurchasesByDate(string day = default)
+        {
+            string url = urlListPurchases;
+            if (day != default)
+                url += ("?day=" + day);
+            return await RestService.MakeGet<List<Purchase>>(url);
+        }
+    }
+
+    public static class DetailPurchaseService
+    {
+        private const string urlDetailPurchase = "/detailPurchase";
+        private const string urlListDetailPurchaseByIdPurchase = urlDetailPurchase + "/listDPu";
+        public async static Task<List<CartDetailPurchaseItem>> ListDetailSaleLikeCartItemByIdSale(long idPurchase)
+        {
+            return await RestService.MakeGet<List<CartDetailPurchaseItem>>(urlListDetailPurchaseByIdPurchase + "/" + idPurchase.ToString());
         }
     }
 }

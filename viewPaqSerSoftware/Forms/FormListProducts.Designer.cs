@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListProducts));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnCreateProduct = new System.Windows.Forms.Button();
             this.lbl_idProduct = new System.Windows.Forms.Label();
             this.lbl_nameProduct = new System.Windows.Forms.Label();
@@ -96,7 +96,7 @@
             // 
             this.lbl_Brand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Brand.AutoSize = true;
-            this.lbl_Brand.Location = new System.Drawing.Point(463, 25);
+            this.lbl_Brand.Location = new System.Drawing.Point(496, 28);
             this.lbl_Brand.Name = "lbl_Brand";
             this.lbl_Brand.Size = new System.Drawing.Size(47, 17);
             this.lbl_Brand.TabIndex = 3;
@@ -120,7 +120,7 @@
             // 
             this.lbl_idProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_idProductType.AutoSize = true;
-            this.lbl_idProductType.Location = new System.Drawing.Point(463, 62);
+            this.lbl_idProductType.Location = new System.Drawing.Point(496, 65);
             this.lbl_idProductType.Name = "lbl_idProductType";
             this.lbl_idProductType.Size = new System.Drawing.Size(116, 17);
             this.lbl_idProductType.TabIndex = 7;
@@ -131,7 +131,7 @@
             this.cmbProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProductType.FormattingEnabled = true;
-            this.cmbProductType.Location = new System.Drawing.Point(611, 60);
+            this.cmbProductType.Location = new System.Drawing.Point(644, 63);
             this.cmbProductType.Name = "cmbProductType";
             this.cmbProductType.Size = new System.Drawing.Size(168, 24);
             this.cmbProductType.TabIndex = 3;
@@ -141,7 +141,7 @@
             this.cmbIdBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbIdBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdBrand.FormattingEnabled = true;
-            this.cmbIdBrand.Location = new System.Drawing.Point(611, 21);
+            this.cmbIdBrand.Location = new System.Drawing.Point(644, 24);
             this.cmbIdBrand.Name = "cmbIdBrand";
             this.cmbIdBrand.Size = new System.Drawing.Size(168, 24);
             this.cmbIdBrand.TabIndex = 2;
@@ -162,7 +162,7 @@
             // 
             this.btnRegisterBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegisterBrand.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterBrand.Location = new System.Drawing.Point(785, 21);
+            this.btnRegisterBrand.Location = new System.Drawing.Point(818, 24);
             this.btnRegisterBrand.Name = "btnRegisterBrand";
             this.btnRegisterBrand.Size = new System.Drawing.Size(34, 24);
             this.btnRegisterBrand.TabIndex = 6;
@@ -173,7 +173,7 @@
             // 
             this.btnRegisterProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRegisterProductType.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterProductType.Location = new System.Drawing.Point(785, 62);
+            this.btnRegisterProductType.Location = new System.Drawing.Point(818, 65);
             this.btnRegisterProductType.Name = "btnRegisterProductType";
             this.btnRegisterProductType.Size = new System.Drawing.Size(34, 24);
             this.btnRegisterProductType.TabIndex = 7;
@@ -200,16 +200,16 @@
             this.Brand,
             this.ProductType,
             this.DetailProduct});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle6.NullValue = "(nulo)";
-            dataGridViewCellStyle6.Padding = new System.Windows.Forms.Padding(8);
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Cambria", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle2.NullValue = "(nulo)";
+            dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(8);
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.MenuHighlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProducts.Location = new System.Drawing.Point(58, 172);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -217,8 +217,8 @@
             this.dgvProducts.RowHeadersVisible = false;
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
-            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(761, 256);
+            this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dgvProducts.Size = new System.Drawing.Size(794, 256);
             this.dgvProducts.TabIndex = 8;
             this.dgvProducts.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellClick);
             // 
@@ -256,9 +256,9 @@
             // 
             // DetailProduct
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle5.NullValue")));
-            this.DetailProduct.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.NullValue = ((object)(resources.GetObject("dataGridViewCellStyle1.NullValue")));
+            this.DetailProduct.DefaultCellStyle = dataGridViewCellStyle1;
             this.DetailProduct.Description = "Presentaciones del producto";
             this.DetailProduct.HeaderText = "Ver Presentaciones";
             this.DetailProduct.Image = ((System.Drawing.Image)(resources.GetObject("DetailProduct.Image")));
@@ -278,14 +278,14 @@
             this.dgvProductDetails.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvProductDetails.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgvProductDetails.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductDetails.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgvProductDetails.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProductDetails.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.codProduct,
@@ -293,16 +293,16 @@
             this.stock,
             this.salePrice,
             this.saleUnit});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Gray;
-            dataGridViewCellStyle8.NullValue = "(nulo)";
-            dataGridViewCellStyle8.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Gray;
+            dataGridViewCellStyle4.NullValue = "(nulo)";
+            dataGridViewCellStyle4.Padding = new System.Windows.Forms.Padding(5);
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.DeepSkyBlue;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvProductDetails.EnableHeadersVisualStyles = false;
             this.dgvProductDetails.Location = new System.Drawing.Point(58, 454);
             this.dgvProductDetails.Name = "dgvProductDetails";
@@ -311,7 +311,7 @@
             this.dgvProductDetails.RowHeadersWidth = 51;
             this.dgvProductDetails.RowTemplate.Height = 24;
             this.dgvProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductDetails.Size = new System.Drawing.Size(761, 312);
+            this.dgvProductDetails.Size = new System.Drawing.Size(794, 312);
             this.dgvProductDetails.TabIndex = 9;
             // 
             // codProduct
@@ -371,7 +371,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(976, 679);
+            this.ClientSize = new System.Drawing.Size(936, 679);
             this.Controls.Add(this.btnAddDPToCart);
             this.Controls.Add(this.dgvProductDetails);
             this.Controls.Add(this.dgvProducts);

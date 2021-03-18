@@ -14,12 +14,14 @@ namespace viewPaqSerSoftware.Forms
     public partial class FormModifySaleCount : Form
     {
         public decimal value { get; set; }
-        private CartItem currentItem; 
-        public FormModifySaleCount(string message, CartItem curItem)
+        private CartDetailSaleItem currentItem; 
+        public FormModifySaleCount(string message, CartDetailSaleItem curItem)
         {
             InitializeComponent();
             this.lblMessage.Text = message;
             this.currentItem = curItem;
+            this.value = currentItem.count;
+            this.txtSaleCount.Text = this.value.ToString();
             this.txtSaleCount.Focus();
         }
         private void btnOk_Click(object sender, EventArgs e)
