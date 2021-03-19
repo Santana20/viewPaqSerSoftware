@@ -39,6 +39,7 @@ namespace viewPaqSerSoftware
         private CartDetailSale cartDetailSale;
         private CartDetailPurchase cartDetailPurchase;
         private Process ProcessAPIRest;
+        private string nameJarFIleAPI = "inventarioAPI-1.0.0.jar";
         #endregion
 
         public HomeForm()
@@ -56,13 +57,12 @@ namespace viewPaqSerSoftware
         {
             try
             {
-                string nameJarFIleAPI = @"\inventarioAPI-1.0.0.jar";
-                string filePath = Application.StartupPath + nameJarFIleAPI;
+                string filePath = string.Concat(Application.StartupPath, @"\", nameJarFIleAPI);
                 ProcessAPIRest = Process.Start(filePath);
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message + "\n Falta el siguiente archivo: " + nameJarFIleAPI);
             }
         }
         private void CloseJarAPI()
