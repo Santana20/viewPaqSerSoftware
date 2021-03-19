@@ -52,6 +52,7 @@ namespace Entities
                 detailSales.Add(value.ToDetailSale());
                 total += value.subTotal;
             }
+            total = decimal.Round(total, 2, MidpointRounding.AwayFromZero);
             return detailSales;
         }
         public void GenerateNewList()
@@ -98,7 +99,7 @@ namespace Entities
         }
         public void UpdateSubTotal()
         {
-            this.subTotal = this.unitPrice * this.count;
+            this.subTotal = decimal.Round(this.unitPrice * this.count, 2, MidpointRounding.AwayFromZero);
         }
     }
 
@@ -166,6 +167,7 @@ namespace Entities
                 detailPurchases.Add(value.ToDetailPurchase());
                 total += value.subTotal;
             }
+            total = decimal.Round(total, 2, MidpointRounding.AwayFromZero);
             return detailPurchases;
         }
         public void GenerateNewList()
@@ -212,7 +214,7 @@ namespace Entities
         }
         public void UpdateSubTotal()
         {
-            this.subTotal = this.quantity * this.unitPrice;
+            this.subTotal = decimal.Round(this.quantity * this.unitPrice, 2, MidpointRounding.AwayFromZero);
         }
     }
 }

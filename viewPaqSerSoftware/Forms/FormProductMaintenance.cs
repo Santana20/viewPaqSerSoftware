@@ -8,14 +8,14 @@ using viewPaqSerSoftware.Forms;
 
 namespace viewPaqSerSoftware
 {
-    public partial class FormListProducts : Form
+    public partial class FormProductMaintenance : Form
     {
         #region Attributes
         public CartDetailSale carrito { get; set; }
         private Product currentProductSelected;
         private int lastRowSelected = -1;
         #endregion
-        public FormListProducts()
+        public FormProductMaintenance()
         {
             InitializeComponent();
             dgvProducts.AutoGenerateColumns = false;
@@ -64,8 +64,8 @@ namespace viewPaqSerSoftware
             {
                 Product product = new Product
                 {
-                    codProduct = txtIdProduct.Text,
-                    nameProduct = txtNameProduct.Text,
+                    codProduct = this.txtIdProduct.Text,
+                    nameProduct = this.txtNameProduct.Text,
                     brand = new Brand { idBrand = (long)cmbIdBrand.SelectedValue },
                     productType = new ProductType { idProductType = (long)cmbProductType.SelectedValue }
                 };
@@ -79,7 +79,7 @@ namespace viewPaqSerSoftware
                 MessageBox.Show(ex.Message);
             }
             
-            ClearItems(); txtIdProduct.Focus();
+            ClearItems(); this.txtIdProduct.Focus();
 
         }
         private async void btnSearch_Click(object sender, EventArgs e)
@@ -124,6 +124,48 @@ namespace viewPaqSerSoftware
 
         #endregion
 
+        #region DGVManagenment
+        private async void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (this.dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
+                {
+                    this.PaintRowAndUnpaintLastSelectedRow(e.RowIndex);
+
+                    long idProduct = (this.dgvProducts.Rows[e.RowIndex].DataBoundItem as Product).id;
+                    this.dgvProductDetails.DataSource = await DetailProductService.ListDetailProductByIdProduct(idProduct);
+                    this.currentProductSelected = (Product)this.dgvProducts.Rows[e.RowIndex].DataBoundItem;
+                }
+                else if (this.dgvProducts.Rows[e.RowIndex].Cells["addDetailproduct"].Selected)
+                {
+                    this.PaintRowAndUnpaintLastSelectedRow(e.RowIndex);
+                    
+                    DialogResult result = new DialogResult();
+                    FormViewMaintainDetailProduct formViewMaintainDetailProduct = new FormViewMaintainDetailProduct();
+                    result = formViewMaintainDetailProduct.ShowDialog(this);
+
+                    if (result == DialogResult.OK)
+                    {
+                        DetailProduct detailProductForMaintain = formViewMaintainDetailProduct.GetDetailProduct();
+
+                        detailProductForMaintain.product = this.dgvProducts.Rows[e.RowIndex].DataBoundItem as Product;
+
+                        DetailProduct resultDetailProduct = await DetailProductService
+                            .RegisterDetailProduct(detailProductForMaintain);
+
+                        FormSuccess.ConfirmationForm("REGISTRADO");
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
+
         #region Utils
         private void ClearItems()
         {
@@ -145,47 +187,5 @@ namespace viewPaqSerSoftware
         private void UpdateLastRowIndexSelected(int currentRowIndex) => this.lastRowSelected = currentRowIndex;
         #endregion
         #endregion
-
-        private void btnAddDPToCart_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                if (dgvProductDetails.SelectedRows.Count == 0)
-                {
-                    throw new Exception("Seleccione producto(s) para agregar al carrito");
-                }
-
-                foreach (DataGridViewRow detailProduct in this.dgvProductDetails.SelectedRows)
-                {
-                    this.carrito.AddCartItem(new CartDetailSaleItem(currentProductSelected, 
-                                            (DetailProduct)detailProduct.DataBoundItem));
-                }
-                FormSuccess.ConfirmationForm("AGREGADO");
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
-
-        private async void dgvProducts_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            try
-            {
-                if (this.dgvProducts.Rows[e.RowIndex].Cells["DetailProduct"].Selected)
-                {
-                    this.PaintRowAndUnpaintLastSelectedRow(e.RowIndex);
-
-                    long idProduct = (this.dgvProducts.Rows[e.RowIndex].DataBoundItem as Product).id;
-                    this.dgvProductDetails.DataSource = await DetailProductService.ListDetailProductByIdProduct(idProduct);
-                    this.currentProductSelected = (Product)this.dgvProducts.Rows[e.RowIndex].DataBoundItem;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
-        }
     }
-
 }

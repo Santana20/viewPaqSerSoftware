@@ -55,6 +55,7 @@
             this.lbl_nameProduct = new System.Windows.Forms.Label();
             this.lbl_idProduct = new System.Windows.Forms.Label();
             this.btnAddTo = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductDetails)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProducts)).BeginInit();
             this.SuspendLayout();
@@ -130,14 +131,14 @@
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvProductDetails.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProductDetails.EnableHeadersVisualStyles = false;
-            this.dgvProductDetails.Location = new System.Drawing.Point(33, 413);
+            this.dgvProductDetails.Location = new System.Drawing.Point(33, 395);
             this.dgvProductDetails.Name = "dgvProductDetails";
             this.dgvProductDetails.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             this.dgvProductDetails.RowHeadersVisible = false;
             this.dgvProductDetails.RowHeadersWidth = 51;
             this.dgvProductDetails.RowTemplate.Height = 24;
             this.dgvProductDetails.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProductDetails.Size = new System.Drawing.Size(733, 312);
+            this.dgvProductDetails.Size = new System.Drawing.Size(843, 225);
             this.dgvProductDetails.TabIndex = 20;
             // 
             // salePrice
@@ -221,7 +222,7 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProducts.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvProducts.Location = new System.Drawing.Point(35, 138);
+            this.dgvProducts.Location = new System.Drawing.Point(33, 149);
             this.dgvProducts.Name = "dgvProducts";
             this.dgvProducts.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.dgvProducts.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -229,7 +230,7 @@
             this.dgvProducts.RowHeadersWidth = 51;
             this.dgvProducts.RowTemplate.Height = 24;
             this.dgvProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProducts.Size = new System.Drawing.Size(731, 256);
+            this.dgvProducts.Size = new System.Drawing.Size(841, 234);
             this.dgvProducts.TabIndex = 19;
             this.dgvProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProducts_CellContentClick);
             // 
@@ -239,7 +240,7 @@
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Location = new System.Drawing.Point(35, 88);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(116, 44);
+            this.btnSearch.Size = new System.Drawing.Size(115, 44);
             this.btnSearch.TabIndex = 17;
             this.btnSearch.Text = "Buscar";
             this.btnSearch.UseVisualStyleBackColor = true;
@@ -250,7 +251,7 @@
             this.cmbIdBrand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbIdBrand.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbIdBrand.FormattingEnabled = true;
-            this.cmbIdBrand.Location = new System.Drawing.Point(600, 13);
+            this.cmbIdBrand.Location = new System.Drawing.Point(558, 13);
             this.cmbIdBrand.Name = "cmbIdBrand";
             this.cmbIdBrand.Size = new System.Drawing.Size(168, 24);
             this.cmbIdBrand.TabIndex = 13;
@@ -260,7 +261,7 @@
             this.cmbProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbProductType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbProductType.FormattingEnabled = true;
-            this.cmbProductType.Location = new System.Drawing.Point(600, 52);
+            this.cmbProductType.Location = new System.Drawing.Point(558, 52);
             this.cmbProductType.Name = "cmbProductType";
             this.cmbProductType.Size = new System.Drawing.Size(168, 24);
             this.cmbProductType.TabIndex = 15;
@@ -269,7 +270,7 @@
             // 
             this.lbl_idProductType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_idProductType.AutoSize = true;
-            this.lbl_idProductType.Location = new System.Drawing.Point(452, 54);
+            this.lbl_idProductType.Location = new System.Drawing.Point(410, 54);
             this.lbl_idProductType.Name = "lbl_idProductType";
             this.lbl_idProductType.Size = new System.Drawing.Size(116, 17);
             this.lbl_idProductType.TabIndex = 18;
@@ -293,7 +294,7 @@
             // 
             this.lbl_Brand.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Brand.AutoSize = true;
-            this.lbl_Brand.Location = new System.Drawing.Point(452, 17);
+            this.lbl_Brand.Location = new System.Drawing.Point(410, 17);
             this.lbl_Brand.Name = "lbl_Brand";
             this.lbl_Brand.Size = new System.Drawing.Size(47, 17);
             this.lbl_Brand.TabIndex = 16;
@@ -321,13 +322,26 @@
             // 
             this.btnAddTo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAddTo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAddTo.Location = new System.Drawing.Point(772, 624);
+            this.btnAddTo.Location = new System.Drawing.Point(193, 88);
             this.btnAddTo.Name = "btnAddTo";
             this.btnAddTo.Size = new System.Drawing.Size(116, 44);
             this.btnAddTo.TabIndex = 21;
-            this.btnAddTo.Text = "Agregar al carrito";
+            this.btnAddTo.Text = "Agregar a la lista";
             this.btnAddTo.UseVisualStyleBackColor = true;
             this.btnAddTo.Click += new System.EventHandler(this.btnAddTo_Click);
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReturn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReturn.Location = new System.Drawing.Point(760, 15);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(116, 44);
+            this.btnReturn.TabIndex = 22;
+            this.btnReturn.Text = "Volver";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
             // FormAddProductForSaleOrPurchase
             // 
@@ -335,6 +349,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(918, 632);
+            this.Controls.Add(this.btnReturn);
             this.Controls.Add(this.btnAddTo);
             this.Controls.Add(this.dgvProductDetails);
             this.Controls.Add(this.dgvProducts);
@@ -384,5 +399,6 @@
         private System.Windows.Forms.Label lbl_nameProduct;
         private System.Windows.Forms.Label lbl_idProduct;
         private System.Windows.Forms.Button btnAddTo;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

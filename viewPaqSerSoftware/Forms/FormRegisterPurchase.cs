@@ -30,7 +30,8 @@ namespace viewPaqSerSoftware.Forms
         {
             this.sourceList = new BindingList<CartDetailPurchaseItem>(this.cartDetailPurchase.getList());
             this.dgvDPurchase.DataSource = this.sourceList;
-            this.lblTotalDPList.Text = Convert.ToString(this.cartDetailPurchase.total);
+            this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailPurchase.total));
+            this.pnlAddDProductForm.Visible = false;
         }
         public void LoadTheme()
         {
@@ -71,7 +72,7 @@ namespace viewPaqSerSoftware.Forms
                     this.cartDetailPurchase.UpdateUnitPriceByIndex(index, formUpdateCartDetailPurchaseItem.unitPrice);
 
                     this.sourceList.ResetItem(index);
-                    this.lblTotalDPList.Text = Convert.ToString(this.cartDetailPurchase.total);
+                    this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailPurchase.total));
 
                     FormSuccess.ConfirmationForm("MODIFICADO");
                 }
@@ -98,7 +99,7 @@ namespace viewPaqSerSoftware.Forms
                     int index = this.dgvDPurchase.CurrentRow.Index;
                     this.cartDetailPurchase.DeleteCartDetailPurchaseItem(index);
                     this.sourceList.ResetBindings();
-                    this.lblTotalDPList.Text = Convert.ToString(this.cartDetailPurchase.total);
+                    this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailPurchase.total));
 
                     FormSuccess.ConfirmationForm("ELIMINADO");
                 }
@@ -113,10 +114,13 @@ namespace viewPaqSerSoftware.Forms
         {
             try
             {
-                FormAddProductForSaleOrPurchase frmSearchProduct = new FormAddProductForSaleOrPurchase("Compra", FormTypes.FormRegisterPurchase);
+                FormAddProductForSaleOrPurchase frmSearchProduct = new FormAddProductForSaleOrPurchase("Compra", FormTypes.FormRegisterPurchase, this.pnlAddDProductForm);
                 frmSearchProduct.cartDetailPurchase = this.cartDetailPurchase;
-                frmSearchProduct.ShowDialog(this);
-                this.sourceList.ResetBindings();
+                frmSearchProduct.sourceListCartDetailPurchase = this.sourceList;
+
+                this.EnableChildForm(frmSearchProduct);
+
+                this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailPurchase.total));
             }
             catch (Exception ex)
             {
@@ -159,9 +163,36 @@ namespace viewPaqSerSoftware.Forms
             this.cartDetailPurchase.GenerateNewList();
             this.sourceList = new BindingList<CartDetailPurchaseItem>(this.cartDetailPurchase.getList());
             this.dgvDPurchase.DataSource = this.sourceList;
-            this.lblTotalDPList.Text = Convert.ToString(this.cartDetailPurchase.total); ;
+            this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailPurchase.total));
             this.txtRuc.Text = string.Empty;
             this.txtRuc.Focus();
         }
+
+        private void UpdateTotalAndSimilars(decimal total)
+        {
+            this.lblTotalDPList.Text = decimal.Round(total, 2, MidpointRounding.AwayFromZero).ToString();
+            decimal subTotal = decimal.Round((total / 1.18m), 2, MidpointRounding.AwayFromZero);
+            decimal IGV = decimal.Round((total - subTotal), 2, MidpointRounding.AwayFromZero);
+            this.lblSubTotalValue.Text = subTotal.ToString();
+            this.lblIGVValue.Text = IGV.ToString();
+
+        }
+
+        #region ChildFormManagement
+        private void EnableChildForm(Form childForm)
+        {
+            this.pnlAddDProductForm.Dock = DockStyle.Fill;
+            this.pnlAddDProductForm.Visible = true;
+
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.pnlAddDProductForm.Controls.Add(childForm);
+            this.pnlAddDProductForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        #endregion
     }
 }

@@ -41,6 +41,8 @@
             this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvSales = new System.Windows.Forms.DataGridView();
+            this.lblDate = new System.Windows.Forms.Label();
+            this.btnVisualizeSaleInPDF = new System.Windows.Forms.Button();
             this.idSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nameClient = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateSale = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,8 +51,6 @@
             this.DetailSale = new System.Windows.Forms.DataGridViewImageColumn();
             this.PDFView = new System.Windows.Forms.DataGridViewImageColumn();
             this.cancelSale = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lblDate = new System.Windows.Forms.Label();
-            this.btnVisualizeSaleInPDF = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailsSale)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).BeginInit();
             this.SuspendLayout();
@@ -59,7 +59,7 @@
             // 
             this.dtpDateSale.CustomFormat = "dd-MM-yyyy";
             this.dtpDateSale.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpDateSale.Location = new System.Drawing.Point(95, 34);
+            this.dtpDateSale.Location = new System.Drawing.Point(100, 21);
             this.dtpDateSale.Name = "dtpDateSale";
             this.dtpDateSale.Size = new System.Drawing.Size(134, 22);
             this.dtpDateSale.TabIndex = 0;
@@ -69,7 +69,7 @@
             // 
             this.btnSearchSales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSearchSales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchSales.Location = new System.Drawing.Point(289, 22);
+            this.btnSearchSales.Location = new System.Drawing.Point(579, 12);
             this.btnSearchSales.Name = "btnSearchSales";
             this.btnSearchSales.Size = new System.Drawing.Size(140, 44);
             this.btnSearchSales.TabIndex = 3;
@@ -203,6 +203,27 @@
             this.dgvSales.TabIndex = 9;
             this.dgvSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSales_CellContentClick);
             // 
+            // lblDate
+            // 
+            this.lblDate.AutoSize = true;
+            this.lblDate.Location = new System.Drawing.Point(47, 23);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(47, 17);
+            this.lblDate.TabIndex = 10;
+            this.lblDate.Text = "Fecha\r\n";
+            // 
+            // btnVisualizeSaleInPDF
+            // 
+            this.btnVisualizeSaleInPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnVisualizeSaleInPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVisualizeSaleInPDF.Location = new System.Drawing.Point(762, 12);
+            this.btnVisualizeSaleInPDF.Name = "btnVisualizeSaleInPDF";
+            this.btnVisualizeSaleInPDF.Size = new System.Drawing.Size(140, 44);
+            this.btnVisualizeSaleInPDF.TabIndex = 11;
+            this.btnVisualizeSaleInPDF.Text = "Ver en PDF";
+            this.btnVisualizeSaleInPDF.UseVisualStyleBackColor = true;
+            this.btnVisualizeSaleInPDF.Click += new System.EventHandler(this.btnVisualizeSaleInPDF_Click);
+            // 
             // idSale
             // 
             this.idSale.DataPropertyName = "idSale";
@@ -265,30 +286,10 @@
             // cancelSale
             // 
             this.cancelSale.HeaderText = "Anular";
+            this.cancelSale.Image = ((System.Drawing.Image)(resources.GetObject("cancelSale.Image")));
             this.cancelSale.MinimumWidth = 6;
             this.cancelSale.Name = "cancelSale";
             this.cancelSale.ReadOnly = true;
-            // 
-            // lblDate
-            // 
-            this.lblDate.AutoSize = true;
-            this.lblDate.Location = new System.Drawing.Point(42, 36);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(47, 17);
-            this.lblDate.TabIndex = 10;
-            this.lblDate.Text = "Fecha\r\n";
-            // 
-            // btnVisualizeSaleInPDF
-            // 
-            this.btnVisualizeSaleInPDF.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnVisualizeSaleInPDF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVisualizeSaleInPDF.Location = new System.Drawing.Point(472, 25);
-            this.btnVisualizeSaleInPDF.Name = "btnVisualizeSaleInPDF";
-            this.btnVisualizeSaleInPDF.Size = new System.Drawing.Size(140, 44);
-            this.btnVisualizeSaleInPDF.TabIndex = 11;
-            this.btnVisualizeSaleInPDF.Text = "Ver en PDF";
-            this.btnVisualizeSaleInPDF.UseVisualStyleBackColor = true;
-            this.btnVisualizeSaleInPDF.Click += new System.EventHandler(this.btnVisualizeSaleInPDF_Click);
             // 
             // FormListSales
             // 
@@ -303,6 +304,7 @@
             this.Controls.Add(this.dtpDateSale);
             this.Name = "FormListSales";
             this.Text = "Listar Ventas";
+            this.Load += new System.EventHandler(this.FormListSales_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailsSale)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSales)).EndInit();
             this.ResumeLayout(false);

@@ -16,7 +16,7 @@ namespace viewPaqSerSoftware
     {
         None,
         HomeForm,
-        FormListProducts,
+        FormProductMaintenance,
         FormRegisterSales,
         FormListSales,
         FormRegisterPurchase,
@@ -158,13 +158,13 @@ namespace viewPaqSerSoftware
         }
         private void btnListProducts_Click(object sender, EventArgs e)
         {
-            if (activeForm == null || activeFormType != FormTypes.FormListProducts)
+            if (activeForm == null || activeFormType != FormTypes.FormProductMaintenance)
             {
-                FormListProducts formListProduct = new FormListProducts
+                FormProductMaintenance formListProduct = new FormProductMaintenance
                 {
                     carrito = this.cartDetailSale
                 };
-                OpenChildForm(formListProduct, FormTypes.FormListProducts, sender);
+                OpenChildForm(formListProduct, FormTypes.FormProductMaintenance, sender);
             }
         }
         #endregion

@@ -21,7 +21,25 @@ namespace viewPaqSerSoftware.Forms
             this.dgvDetailsPurchase.AutoGenerateColumns = false;
             this.dtpDatePurchase.Value = DateTime.Now;
         }
-
+        private void FormListPurchases_Load(object sender, EventArgs e)
+        {
+            this.LoadTheme();
+        }
+        private void LoadTheme()
+        {
+            foreach (Control control in this.Controls)
+            {
+                if (control.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)control;
+                    btn.BackColor = ThemeColor.primaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
+                }
+            }
+            this.dgvPurchases.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
+            this.dgvDetailsPurchase.DefaultCellStyle.SelectionBackColor = ThemeColor.primaryColor;
+        }
         private async void btnSearchPurchases_Click(object sender, EventArgs e)
         {
             try
@@ -68,6 +86,7 @@ namespace viewPaqSerSoftware.Forms
             this.dgvPurchases.Rows[currentRowIndex].DefaultCellStyle.BackColor = this.dgvPurchases.DefaultCellStyle.SelectionBackColor;
         }
         private void UpdateLastRowIndexSelected(int currentRowIndex) => this.lastRowSelected = currentRowIndex;
+
         #endregion
 
         

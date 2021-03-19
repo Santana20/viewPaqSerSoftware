@@ -16,18 +16,22 @@ namespace viewPaqSerSoftware.Forms
     {
         #region Attributes
         public CartDetailSale cartDetailSale { get; set; }
-        public CartDetailPurchase cartDetailPurchase{ get; set; }
+        public CartDetailPurchase cartDetailPurchase { get; set; }
+        public BindingList<CartDetailPurchaseItem> sourceListCartDetailPurchase { get; set; }
+        public BindingList<CartDetailSaleItem> sourceListCartDetailSale { get; set; }
         private FormTypes formParent;
         private Product currentProductSelected;
         private int lastRowSelected = -1;
+        private Panel PanelParent;
         #endregion
-        public FormAddProductForSaleOrPurchase(string isFor, FormTypes formParent)
+        public FormAddProductForSaleOrPurchase(string isFor, FormTypes formParent, Panel panel)
         {
             InitializeComponent();
             this.Text += isFor;
             this.formParent = formParent;
             this.dgvProducts.AutoGenerateColumns = false;
             this.dgvProductDetails.AutoGenerateColumns = false;
+            this.PanelParent = panel;
         }
         private async void FormAddProductForSaleOrPurchase_Load(object sender, EventArgs e)
         {
@@ -172,6 +176,20 @@ namespace viewPaqSerSoftware.Forms
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            this.PanelParent.Visible = false;
+            if (this.formParent == FormTypes.FormRegisterSales && this.sourceListCartDetailSale != null)
+            {
+                this.sourceListCartDetailSale.ResetBindings();
+            }
+            else if (this.formParent == FormTypes.FormRegisterPurchase && this.sourceListCartDetailPurchase != null)
+            {
+                this.sourceListCartDetailPurchase.ResetBindings();
+            }
+            this.Close();
         }
     }
 }

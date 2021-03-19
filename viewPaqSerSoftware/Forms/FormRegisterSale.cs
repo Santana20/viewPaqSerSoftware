@@ -28,7 +28,8 @@ namespace viewPaqSerSoftware.Forms
             this.LoadTheme();
             this.sourceList = new BindingList<CartDetailSaleItem>(this.cartDetailSale.getList());
             this.dgvCart.DataSource = this.sourceList;
-            this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
+            this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailSale.total));
+            this.pnlAddDProductForm.Visible = false;
         }
         private void LoadTheme()
         {
@@ -64,7 +65,7 @@ namespace viewPaqSerSoftware.Forms
                 {
                     this.cartDetailSale.UpdateSaleCountByIndex(index, frmModifySaleCount.value);
                     this.sourceList.ResetItem(index);
-                    this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
+                    this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailSale.total));
 
                     FormSuccess.ConfirmationForm("MODIFICADO");
                 }
@@ -91,7 +92,7 @@ namespace viewPaqSerSoftware.Forms
                     int index = this.dgvCart.CurrentRow.Index;
                     this.cartDetailSale.DeleteCartItem(index, detailProduct.idDetailProduct);
                     this.sourceList.ResetBindings();
-                    this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
+                    this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailSale.total));
 
                     FormSuccess.ConfirmationForm("ELIMINADO");
                 }
@@ -106,10 +107,13 @@ namespace viewPaqSerSoftware.Forms
         {
             try
             {
-                FormAddProductForSaleOrPurchase frmSearchProduct = new FormAddProductForSaleOrPurchase("Venta", FormTypes.FormRegisterSales);
+                FormAddProductForSaleOrPurchase frmSearchProduct = new FormAddProductForSaleOrPurchase("Venta", FormTypes.FormRegisterSales, this.pnlAddDProductForm);
                 frmSearchProduct.cartDetailSale = this.cartDetailSale;
-                frmSearchProduct.ShowDialog(this);
-                this.sourceList.ResetBindings();
+                frmSearchProduct.sourceListCartDetailSale = this.sourceList;
+
+                this.EnableChildForm(frmSearchProduct);
+
+                this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailSale.total));
             }
             catch (Exception ex)
             {
@@ -156,9 +160,39 @@ namespace viewPaqSerSoftware.Forms
             this.cartDetailSale.GenerateNewList();
             this.sourceList = new BindingList<CartDetailSaleItem>(this.cartDetailSale.getList());
             this.dgvCart.DataSource = this.sourceList;
-            this.lblTotalCart.Text = Convert.ToString(this.cartDetailSale.total);
+
+            this.UpdateTotalAndSimilars(Convert.ToDecimal(this.cartDetailSale.total));
+
             this.txtNameClient.Text = string.Empty;
             this.txtNameClient.Focus();
         }
+
+        private void UpdateTotalAndSimilars(decimal total)
+        {
+            this.lblTotalCart.Text = decimal.Round(total, 2, MidpointRounding.AwayFromZero).ToString();
+            decimal subTotal = decimal.Round((total / 1.18m), 2, MidpointRounding.AwayFromZero);
+            decimal IGV = decimal.Round((total - subTotal), 2, MidpointRounding.AwayFromZero);
+            this.lblSubTotalValue.Text = subTotal.ToString();
+            this.lblIGVValue.Text = IGV.ToString();
+
+        }
+
+
+        #region ChildFormManagement
+        private void EnableChildForm(Form childForm)
+        {
+            this.pnlAddDProductForm.Dock = DockStyle.Fill;
+            this.pnlAddDProductForm.Visible = true;
+
+            childForm.TopLevel = false;
+            childForm.FormBorderStyle = FormBorderStyle.None;
+            childForm.Dock = DockStyle.Fill;
+            this.pnlAddDProductForm.Controls.Add(childForm);
+            this.pnlAddDProductForm.Tag = childForm;
+            childForm.BringToFront();
+            childForm.Show();
+        }
+
+        #endregion
     }
 }

@@ -40,12 +40,15 @@
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblTitlePurchaseValue = new System.Windows.Forms.Label();
             this.lblTitleIGV = new System.Windows.Forms.Label();
-            this.lblTotalDPList = new System.Windows.Forms.Label();
             this.lblTitleTotal = new System.Windows.Forms.Label();
             this.btnDeleteDPu = new System.Windows.Forms.Button();
             this.btnUpdateDPu = new System.Windows.Forms.Button();
             this.btnAddDPu = new System.Windows.Forms.Button();
             this.lblPurchaseDetails = new System.Windows.Forms.Label();
+            this.lblSubTotalValue = new System.Windows.Forms.Label();
+            this.lblIGVValue = new System.Windows.Forms.Label();
+            this.lblTotalDPList = new System.Windows.Forms.Label();
+            this.pnlAddDProductForm = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDPurchase)).BeginInit();
             this.SuspendLayout();
             // 
@@ -183,17 +186,6 @@
             this.lblTitleIGV.TabIndex = 19;
             this.lblTitleIGV.Text = "IGV(18%):";
             // 
-            // lblTotalDPList
-            // 
-            this.lblTotalDPList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblTotalDPList.AutoSize = true;
-            this.lblTotalDPList.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalDPList.Location = new System.Drawing.Point(811, 576);
-            this.lblTotalDPList.Name = "lblTotalDPList";
-            this.lblTotalDPList.Size = new System.Drawing.Size(56, 28);
-            this.lblTotalDPList.TabIndex = 18;
-            this.lblTotalDPList.Text = "0.00";
-            // 
             // lblTitleTotal
             // 
             this.lblTitleTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -255,15 +247,61 @@
             this.lblPurchaseDetails.TabIndex = 13;
             this.lblPurchaseDetails.Text = "Detalle de Compra";
             // 
+            // lblSubTotalValue
+            // 
+            this.lblSubTotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSubTotalValue.AutoSize = true;
+            this.lblSubTotalValue.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotalValue.Location = new System.Drawing.Point(834, 497);
+            this.lblSubTotalValue.Name = "lblSubTotalValue";
+            this.lblSubTotalValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblSubTotalValue.Size = new System.Drawing.Size(56, 28);
+            this.lblSubTotalValue.TabIndex = 24;
+            this.lblSubTotalValue.Text = "0.00";
+            // 
+            // lblIGVValue
+            // 
+            this.lblIGVValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIGVValue.AutoSize = true;
+            this.lblIGVValue.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIGVValue.Location = new System.Drawing.Point(834, 537);
+            this.lblIGVValue.Name = "lblIGVValue";
+            this.lblIGVValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblIGVValue.Size = new System.Drawing.Size(56, 28);
+            this.lblIGVValue.TabIndex = 23;
+            this.lblIGVValue.Text = "0.00";
+            // 
+            // lblTotalDPList
+            // 
+            this.lblTotalDPList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTotalDPList.AutoSize = true;
+            this.lblTotalDPList.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalDPList.Location = new System.Drawing.Point(834, 577);
+            this.lblTotalDPList.Name = "lblTotalDPList";
+            this.lblTotalDPList.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblTotalDPList.Size = new System.Drawing.Size(56, 28);
+            this.lblTotalDPList.TabIndex = 22;
+            this.lblTotalDPList.Text = "0.00";
+            // 
+            // pnlAddDProductForm
+            // 
+            this.pnlAddDProductForm.Location = new System.Drawing.Point(33, 507);
+            this.pnlAddDProductForm.Name = "pnlAddDProductForm";
+            this.pnlAddDProductForm.Size = new System.Drawing.Size(115, 68);
+            this.pnlAddDProductForm.TabIndex = 25;
+            // 
             // FormRegisterPurchase
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(918, 632);
+            this.Controls.Add(this.pnlAddDProductForm);
+            this.Controls.Add(this.lblSubTotalValue);
+            this.Controls.Add(this.lblIGVValue);
+            this.Controls.Add(this.lblTotalDPList);
             this.Controls.Add(this.dgvDPurchase);
             this.Controls.Add(this.lblTitlePurchaseValue);
             this.Controls.Add(this.lblTitleIGV);
-            this.Controls.Add(this.lblTotalDPList);
             this.Controls.Add(this.lblTitleTotal);
             this.Controls.Add(this.btnDeleteDPu);
             this.Controls.Add(this.btnUpdateDPu);
@@ -289,7 +327,6 @@
         private System.Windows.Forms.DataGridView dgvDPurchase;
         private System.Windows.Forms.Label lblTitlePurchaseValue;
         private System.Windows.Forms.Label lblTitleIGV;
-        private System.Windows.Forms.Label lblTotalDPList;
         private System.Windows.Forms.Label lblTitleTotal;
         private System.Windows.Forms.Button btnDeleteDPu;
         private System.Windows.Forms.Button btnUpdateDPu;
@@ -301,5 +338,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
+        private System.Windows.Forms.Label lblSubTotalValue;
+        private System.Windows.Forms.Label lblIGVValue;
+        private System.Windows.Forms.Label lblTotalDPList;
+        private System.Windows.Forms.Panel pnlAddDProductForm;
     }
 }

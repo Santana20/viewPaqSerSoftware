@@ -32,6 +32,8 @@ namespace viewPaqSerSoftware.Forms
                 if (value > this.currentItem.Stock)
                     throw new ArgumentException("La cantidad no puede ser mayor al stock disponible.\n" +
                         "Stock disponible para el producto actual: " + this.currentItem.Stock.ToString());
+                if (value < 0)
+                    throw new ArgumentException("la cantidad no puede ser negativa");
                 this.DialogResult = DialogResult.OK;
             }
             catch(Exception ex)

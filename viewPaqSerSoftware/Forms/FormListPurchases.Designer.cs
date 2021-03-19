@@ -41,12 +41,12 @@
             this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvPurchases = new System.Windows.Forms.DataGridView();
-            this.lblDate = new System.Windows.Forms.Label();
             this.idPurchase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ruc = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.datePurchase = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DetailPurchase = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lblDate = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailsPurchase)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchases)).BeginInit();
             this.SuspendLayout();
@@ -196,14 +196,6 @@
             this.dgvPurchases.TabIndex = 15;
             this.dgvPurchases.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPurchases_CellContentClick);
             // 
-            // lblDate
-            // 
-            this.lblDate.Location = new System.Drawing.Point(49, 31);
-            this.lblDate.Name = "lblDate";
-            this.lblDate.Size = new System.Drawing.Size(62, 20);
-            this.lblDate.TabIndex = 16;
-            this.lblDate.Text = "Fecha:";
-            // 
             // idPurchase
             // 
             this.idPurchase.DataPropertyName = "idPurchase";
@@ -248,6 +240,14 @@
             this.DetailPurchase.Name = "DetailPurchase";
             this.DetailPurchase.ReadOnly = true;
             // 
+            // lblDate
+            // 
+            this.lblDate.Location = new System.Drawing.Point(49, 31);
+            this.lblDate.Name = "lblDate";
+            this.lblDate.Size = new System.Drawing.Size(62, 20);
+            this.lblDate.TabIndex = 16;
+            this.lblDate.Text = "Fecha:";
+            // 
             // FormListPurchases
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -261,6 +261,7 @@
             this.Name = "FormListPurchases";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Lista de Compras";
+            this.Load += new System.EventHandler(this.FormListPurchases_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetailsPurchase)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPurchases)).EndInit();
             this.ResumeLayout(false);

@@ -29,12 +29,16 @@
         private void InitializeComponent()
         {
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.pnlPurchaseSubMenu = new System.Windows.Forms.Panel();
+            this.btnListPurchases = new System.Windows.Forms.Button();
+            this.btnRegisterPurchase = new System.Windows.Forms.Button();
+            this.btnMenuPurchase = new System.Windows.Forms.Button();
             this.pnlSalesSubMenu = new System.Windows.Forms.Panel();
             this.btnListSales = new System.Windows.Forms.Button();
             this.btnRegisterSale = new System.Windows.Forms.Button();
             this.btnMenuSales = new System.Windows.Forms.Button();
             this.pnlProductsSubMenu = new System.Windows.Forms.Panel();
-            this.btnListProducts = new System.Windows.Forms.Button();
+            this.btnProductMaintenance = new System.Windows.Forms.Button();
             this.btnMenuProducts = new System.Windows.Forms.Button();
             this.panelLogo = new System.Windows.Forms.Panel();
             this.lblLogoName = new System.Windows.Forms.Label();
@@ -42,16 +46,12 @@
             this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.lblTitleBar = new System.Windows.Forms.Label();
             this.panelDesktop = new System.Windows.Forms.Panel();
-            this.btnMenuPurchase = new System.Windows.Forms.Button();
-            this.pnlPurchaseSubMenu = new System.Windows.Forms.Panel();
-            this.btnListPurchases = new System.Windows.Forms.Button();
-            this.btnRegisterPurchase = new System.Windows.Forms.Button();
             this.panelMenu.SuspendLayout();
+            this.pnlPurchaseSubMenu.SuspendLayout();
             this.pnlSalesSubMenu.SuspendLayout();
             this.pnlProductsSubMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
-            this.pnlPurchaseSubMenu.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelMenu
@@ -71,13 +71,81 @@
             this.panelMenu.Size = new System.Drawing.Size(246, 753);
             this.panelMenu.TabIndex = 1;
             // 
+            // pnlPurchaseSubMenu
+            // 
+            this.pnlPurchaseSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(53)))), ((int)(((byte)(99)))));
+            this.pnlPurchaseSubMenu.Controls.Add(this.btnListPurchases);
+            this.pnlPurchaseSubMenu.Controls.Add(this.btnRegisterPurchase);
+            this.pnlPurchaseSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlPurchaseSubMenu.Location = new System.Drawing.Point(0, 441);
+            this.pnlPurchaseSubMenu.Name = "pnlPurchaseSubMenu";
+            this.pnlPurchaseSubMenu.Size = new System.Drawing.Size(246, 95);
+            this.pnlPurchaseSubMenu.TabIndex = 7;
+            // 
+            // btnListPurchases
+            // 
+            this.btnListPurchases.AutoSize = true;
+            this.btnListPurchases.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnListPurchases.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnListPurchases.FlatAppearance.BorderSize = 0;
+            this.btnListPurchases.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnListPurchases.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnListPurchases.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnListPurchases.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnListPurchases.Location = new System.Drawing.Point(0, 45);
+            this.btnListPurchases.Name = "btnListPurchases";
+            this.btnListPurchases.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnListPurchases.Size = new System.Drawing.Size(246, 45);
+            this.btnListPurchases.TabIndex = 3;
+            this.btnListPurchases.Text = "Listar Compras";
+            this.btnListPurchases.UseVisualStyleBackColor = true;
+            this.btnListPurchases.Click += new System.EventHandler(this.btnListPurchases_Click);
+            // 
+            // btnRegisterPurchase
+            // 
+            this.btnRegisterPurchase.AutoSize = true;
+            this.btnRegisterPurchase.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegisterPurchase.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnRegisterPurchase.FlatAppearance.BorderSize = 0;
+            this.btnRegisterPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegisterPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRegisterPurchase.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnRegisterPurchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRegisterPurchase.Location = new System.Drawing.Point(0, 0);
+            this.btnRegisterPurchase.Name = "btnRegisterPurchase";
+            this.btnRegisterPurchase.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnRegisterPurchase.Size = new System.Drawing.Size(246, 45);
+            this.btnRegisterPurchase.TabIndex = 2;
+            this.btnRegisterPurchase.Text = "Registrar Compra";
+            this.btnRegisterPurchase.UseVisualStyleBackColor = true;
+            this.btnRegisterPurchase.Click += new System.EventHandler(this.btnRegisterPurchase_Click);
+            // 
+            // btnMenuPurchase
+            // 
+            this.btnMenuPurchase.AutoSize = true;
+            this.btnMenuPurchase.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenuPurchase.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMenuPurchase.FlatAppearance.BorderSize = 0;
+            this.btnMenuPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMenuPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMenuPurchase.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnMenuPurchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnMenuPurchase.Location = new System.Drawing.Point(0, 376);
+            this.btnMenuPurchase.Name = "btnMenuPurchase";
+            this.btnMenuPurchase.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnMenuPurchase.Size = new System.Drawing.Size(246, 65);
+            this.btnMenuPurchase.TabIndex = 6;
+            this.btnMenuPurchase.Text = "Compras";
+            this.btnMenuPurchase.UseVisualStyleBackColor = true;
+            this.btnMenuPurchase.Click += new System.EventHandler(this.btnMenuPurchase_Click);
+            // 
             // pnlSalesSubMenu
             // 
             this.pnlSalesSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(53)))), ((int)(((byte)(99)))));
             this.pnlSalesSubMenu.Controls.Add(this.btnListSales);
             this.pnlSalesSubMenu.Controls.Add(this.btnRegisterSale);
             this.pnlSalesSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlSalesSubMenu.Location = new System.Drawing.Point(0, 250);
+            this.pnlSalesSubMenu.Location = new System.Drawing.Point(0, 275);
             this.pnlSalesSubMenu.Name = "pnlSalesSubMenu";
             this.pnlSalesSubMenu.Size = new System.Drawing.Size(246, 101);
             this.pnlSalesSubMenu.TabIndex = 5;
@@ -130,7 +198,7 @@
             this.btnMenuSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMenuSales.ForeColor = System.Drawing.Color.Gainsboro;
             this.btnMenuSales.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuSales.Location = new System.Drawing.Point(0, 185);
+            this.btnMenuSales.Location = new System.Drawing.Point(0, 210);
             this.btnMenuSales.Name = "btnMenuSales";
             this.btnMenuSales.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnMenuSales.Size = new System.Drawing.Size(246, 65);
@@ -142,31 +210,31 @@
             // pnlProductsSubMenu
             // 
             this.pnlProductsSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(53)))), ((int)(((byte)(99)))));
-            this.pnlProductsSubMenu.Controls.Add(this.btnListProducts);
+            this.pnlProductsSubMenu.Controls.Add(this.btnProductMaintenance);
             this.pnlProductsSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlProductsSubMenu.Location = new System.Drawing.Point(0, 134);
             this.pnlProductsSubMenu.Name = "pnlProductsSubMenu";
-            this.pnlProductsSubMenu.Size = new System.Drawing.Size(246, 51);
+            this.pnlProductsSubMenu.Size = new System.Drawing.Size(246, 76);
             this.pnlProductsSubMenu.TabIndex = 4;
             // 
-            // btnListProducts
+            // btnProductMaintenance
             // 
-            this.btnListProducts.AutoSize = true;
-            this.btnListProducts.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnListProducts.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnListProducts.FlatAppearance.BorderSize = 0;
-            this.btnListProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListProducts.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnListProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListProducts.Location = new System.Drawing.Point(0, 0);
-            this.btnListProducts.Name = "btnListProducts";
-            this.btnListProducts.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnListProducts.Size = new System.Drawing.Size(246, 45);
-            this.btnListProducts.TabIndex = 2;
-            this.btnListProducts.Text = "Listar Productos";
-            this.btnListProducts.UseVisualStyleBackColor = true;
-            this.btnListProducts.Click += new System.EventHandler(this.btnListProducts_Click);
+            this.btnProductMaintenance.AutoSize = true;
+            this.btnProductMaintenance.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnProductMaintenance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnProductMaintenance.FlatAppearance.BorderSize = 0;
+            this.btnProductMaintenance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnProductMaintenance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProductMaintenance.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnProductMaintenance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnProductMaintenance.Location = new System.Drawing.Point(0, 0);
+            this.btnProductMaintenance.Name = "btnProductMaintenance";
+            this.btnProductMaintenance.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnProductMaintenance.Size = new System.Drawing.Size(246, 63);
+            this.btnProductMaintenance.TabIndex = 2;
+            this.btnProductMaintenance.Text = "Mantenimiento de Productos";
+            this.btnProductMaintenance.UseVisualStyleBackColor = true;
+            this.btnProductMaintenance.Click += new System.EventHandler(this.btnListProducts_Click);
             // 
             // btnMenuProducts
             // 
@@ -262,74 +330,6 @@
             this.panelDesktop.Size = new System.Drawing.Size(936, 679);
             this.panelDesktop.TabIndex = 3;
             // 
-            // btnMenuPurchase
-            // 
-            this.btnMenuPurchase.AutoSize = true;
-            this.btnMenuPurchase.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenuPurchase.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMenuPurchase.FlatAppearance.BorderSize = 0;
-            this.btnMenuPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenuPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMenuPurchase.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnMenuPurchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMenuPurchase.Location = new System.Drawing.Point(0, 351);
-            this.btnMenuPurchase.Name = "btnMenuPurchase";
-            this.btnMenuPurchase.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnMenuPurchase.Size = new System.Drawing.Size(246, 65);
-            this.btnMenuPurchase.TabIndex = 6;
-            this.btnMenuPurchase.Text = "Compras";
-            this.btnMenuPurchase.UseVisualStyleBackColor = true;
-            this.btnMenuPurchase.Click += new System.EventHandler(this.btnMenuPurchase_Click);
-            // 
-            // pnlPurchaseSubMenu
-            // 
-            this.pnlPurchaseSubMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(53)))), ((int)(((byte)(99)))));
-            this.pnlPurchaseSubMenu.Controls.Add(this.btnListPurchases);
-            this.pnlPurchaseSubMenu.Controls.Add(this.btnRegisterPurchase);
-            this.pnlPurchaseSubMenu.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlPurchaseSubMenu.Location = new System.Drawing.Point(0, 416);
-            this.pnlPurchaseSubMenu.Name = "pnlPurchaseSubMenu";
-            this.pnlPurchaseSubMenu.Size = new System.Drawing.Size(246, 95);
-            this.pnlPurchaseSubMenu.TabIndex = 7;
-            // 
-            // btnListPurchases
-            // 
-            this.btnListPurchases.AutoSize = true;
-            this.btnListPurchases.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnListPurchases.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnListPurchases.FlatAppearance.BorderSize = 0;
-            this.btnListPurchases.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnListPurchases.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnListPurchases.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnListPurchases.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnListPurchases.Location = new System.Drawing.Point(0, 45);
-            this.btnListPurchases.Name = "btnListPurchases";
-            this.btnListPurchases.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnListPurchases.Size = new System.Drawing.Size(246, 45);
-            this.btnListPurchases.TabIndex = 3;
-            this.btnListPurchases.Text = "Listar Compras";
-            this.btnListPurchases.UseVisualStyleBackColor = true;
-            this.btnListPurchases.Click += new System.EventHandler(this.btnListPurchases_Click);
-            // 
-            // btnRegisterPurchase
-            // 
-            this.btnRegisterPurchase.AutoSize = true;
-            this.btnRegisterPurchase.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnRegisterPurchase.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnRegisterPurchase.FlatAppearance.BorderSize = 0;
-            this.btnRegisterPurchase.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegisterPurchase.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRegisterPurchase.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnRegisterPurchase.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnRegisterPurchase.Location = new System.Drawing.Point(0, 0);
-            this.btnRegisterPurchase.Name = "btnRegisterPurchase";
-            this.btnRegisterPurchase.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
-            this.btnRegisterPurchase.Size = new System.Drawing.Size(246, 45);
-            this.btnRegisterPurchase.TabIndex = 2;
-            this.btnRegisterPurchase.Text = "Registrar Compra";
-            this.btnRegisterPurchase.UseVisualStyleBackColor = true;
-            this.btnRegisterPurchase.Click += new System.EventHandler(this.btnRegisterPurchase_Click);
-            // 
             // HomeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -347,6 +347,8 @@
             this.Text = "Inicio";
             this.panelMenu.ResumeLayout(false);
             this.panelMenu.PerformLayout();
+            this.pnlPurchaseSubMenu.ResumeLayout(false);
+            this.pnlPurchaseSubMenu.PerformLayout();
             this.pnlSalesSubMenu.ResumeLayout(false);
             this.pnlSalesSubMenu.PerformLayout();
             this.pnlProductsSubMenu.ResumeLayout(false);
@@ -355,8 +357,6 @@
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
-            this.pnlPurchaseSubMenu.ResumeLayout(false);
-            this.pnlPurchaseSubMenu.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -373,7 +373,7 @@
         private System.Windows.Forms.Label lblTitleBar;
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Panel pnlProductsSubMenu;
-        private System.Windows.Forms.Button btnListProducts;
+        private System.Windows.Forms.Button btnProductMaintenance;
         private System.Windows.Forms.Panel pnlSalesSubMenu;
         private System.Windows.Forms.Button btnListSales;
         private System.Windows.Forms.Button btnRegisterSale;

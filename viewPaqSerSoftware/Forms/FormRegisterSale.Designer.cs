@@ -46,6 +46,9 @@
             this.description = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unitPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.subTotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.pnlAddDProductForm = new System.Windows.Forms.Panel();
+            this.lblIGVValue = new System.Windows.Forms.Label();
+            this.lblSubTotalValue = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
             // 
@@ -148,8 +151,9 @@
             this.lblTotalCart.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalCart.AutoSize = true;
             this.lblTotalCart.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalCart.Location = new System.Drawing.Point(825, 591);
+            this.lblTotalCart.Location = new System.Drawing.Point(835, 591);
             this.lblTotalCart.Name = "lblTotalCart";
+            this.lblTotalCart.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.lblTotalCart.Size = new System.Drawing.Size(56, 28);
             this.lblTotalCart.TabIndex = 9;
             this.lblTotalCart.Text = "0.00";
@@ -254,15 +258,46 @@
             this.subTotal.Name = "subTotal";
             this.subTotal.ReadOnly = true;
             // 
+            // pnlAddDProductForm
+            // 
+            this.pnlAddDProductForm.Location = new System.Drawing.Point(50, 511);
+            this.pnlAddDProductForm.Name = "pnlAddDProductForm";
+            this.pnlAddDProductForm.Size = new System.Drawing.Size(115, 68);
+            this.pnlAddDProductForm.TabIndex = 13;
+            // 
+            // lblIGVValue
+            // 
+            this.lblIGVValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblIGVValue.AutoSize = true;
+            this.lblIGVValue.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIGVValue.Location = new System.Drawing.Point(835, 551);
+            this.lblIGVValue.Name = "lblIGVValue";
+            this.lblIGVValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblIGVValue.Size = new System.Drawing.Size(56, 28);
+            this.lblIGVValue.TabIndex = 14;
+            this.lblIGVValue.Text = "0.00";
+            // 
+            // lblSubTotalValue
+            // 
+            this.lblSubTotalValue.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSubTotalValue.AutoSize = true;
+            this.lblSubTotalValue.Font = new System.Drawing.Font("Cambria", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSubTotalValue.Location = new System.Drawing.Point(835, 511);
+            this.lblSubTotalValue.Name = "lblSubTotalValue";
+            this.lblSubTotalValue.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.lblSubTotalValue.Size = new System.Drawing.Size(56, 28);
+            this.lblSubTotalValue.TabIndex = 15;
+            this.lblSubTotalValue.Text = "0.00";
+            // 
             // FormRegisterSale
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(936, 679);
+            this.Controls.Add(this.pnlAddDProductForm);
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.lblTitleSaleValue);
             this.Controls.Add(this.lblTitleIGV);
-            this.Controls.Add(this.lblTotalCart);
             this.Controls.Add(this.lblTitleTotal);
             this.Controls.Add(this.btnRegisterSale);
             this.Controls.Add(this.btnDeleteDS);
@@ -271,6 +306,9 @@
             this.Controls.Add(this.lblSaleDetails);
             this.Controls.Add(this.lblnameClient);
             this.Controls.Add(this.txtNameClient);
+            this.Controls.Add(this.lblSubTotalValue);
+            this.Controls.Add(this.lblIGVValue);
+            this.Controls.Add(this.lblTotalCart);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "FormRegisterSale";
             this.Text = "Registrar Venta";
@@ -301,5 +339,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn description;
         private System.Windows.Forms.DataGridViewTextBoxColumn unitPrice;
         private System.Windows.Forms.DataGridViewTextBoxColumn subTotal;
+        private System.Windows.Forms.Panel pnlAddDProductForm;
+        private System.Windows.Forms.Label lblIGVValue;
+        private System.Windows.Forms.Label lblSubTotalValue;
     }
 }

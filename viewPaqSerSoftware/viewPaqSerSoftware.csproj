@@ -83,6 +83,12 @@
     <Compile Include="Forms\FormAddProductForSaleOrPurchase.Designer.cs">
       <DependentUpon>FormAddProductForSaleOrPurchase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormViewMaintainDetailProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormViewMaintainDetailProduct.Designer.cs">
+      <DependentUpon>FormViewMaintainDetailProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormInformation.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,11 +113,11 @@
     <Compile Include="Forms\FormModifySaleCount.Designer.cs">
       <DependentUpon>FormModifySaleCount.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormListProducts.cs">
+    <Compile Include="Forms\FormProductMaintenance.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormListProducts.Designer.cs">
-      <DependentUpon>FormListProducts.cs</DependentUpon>
+    <Compile Include="Forms\FormProductMaintenance.Designer.cs">
+      <DependentUpon>FormProductMaintenance.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormRegisterPurchase.cs">
       <SubType>Form</SubType>
@@ -161,6 +167,9 @@
     <EmbeddedResource Include="Forms\FormAddProductForSaleOrPurchase.resx">
       <DependentUpon>FormAddProductForSaleOrPurchase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormViewMaintainDetailProduct.resx">
+      <DependentUpon>FormViewMaintainDetailProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormInformation.resx">
       <DependentUpon>FormInformation.cs</DependentUpon>
     </EmbeddedResource>
@@ -173,8 +182,8 @@
     <EmbeddedResource Include="Forms\FormModifySaleCount.resx">
       <DependentUpon>FormModifySaleCount.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormListProducts.resx">
-      <DependentUpon>FormListProducts.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormProductMaintenance.resx">
+      <DependentUpon>FormProductMaintenance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormRegisterPurchase.resx">
       <DependentUpon>FormRegisterPurchase.cs</DependentUpon>
