@@ -3,8 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -36,6 +38,7 @@ namespace viewPaqSerSoftware
         private FormTypes activeFormType;
         private CartDetailSale cartDetailSale;
         private CartDetailPurchase cartDetailPurchase;
+        private Process ProcessAPIRest;
         #endregion
 
         public HomeForm()
@@ -44,16 +47,89 @@ namespace viewPaqSerSoftware
             this.cartDetailSale = new CartDetailSale();
             this.cartDetailPurchase = new CartDetailPurchase();
             this.InitialConfigurationDesign();
+            this.OpenJarAPI();
         }
 
+        #region ManagementJarApi
+
+        private void OpenJarAPI()
+        {
+            try
+            {
+                string nameJarFIleAPI = @"\inventarioAPI-1.0.0.jar";
+                string filePath = Application.StartupPath + nameJarFIleAPI;
+                ProcessAPIRest = Process.Start(filePath);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void CloseJarAPI()
+        {
+            if (ProcessAPIRest != null) ProcessAPIRest.Kill();
+        }
+        #endregion
 
         #region MethodsDesigns
+
+        #region PanelTitleBarMovement
+        [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
+        private extern static void ReleaseCapture();
+        [DllImport("user32.DLL", EntryPoint = "SendMessage")]
+        private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
+        private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
+        {
+            ReleaseCapture();
+            SendMessage(this.Handle, 0x112, 0xf012, 0);
+        }
+        #endregion
+
+        #region ButtonCloseMaxiAndMinimizeForm
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                DialogResult result = new DialogResult();
+                FormInformation formInformation = new FormInformation("¿Esta seguro de salir del sistema?", "SALIR");
+                result = formInformation.ShowDialog(this);
+
+                if (result == DialogResult.OK)
+                {
+                    this.CloseJarAPI();
+                    Application.Exit();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void btnMaximize_Click(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                this.WindowState = FormWindowState.Maximized;
+            }
+            else this.WindowState = FormWindowState.Normal;
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+        #endregion
+
         private void InitialConfigurationDesign()
         {
             random = new Random();
             
             btnCloseChildForm.Visible = false;
-            this.Text = String.Empty;
+            this.Text = string.Empty;
+            this.ControlBox = false;
+            this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
             this.MakeInvisibleSubPanels();
         }
         private void MakeInvisibleSubPanels()
@@ -118,6 +194,7 @@ namespace viewPaqSerSoftware
             btnCloseChildForm.Visible = false;
             activeFormType = FormTypes.None;
         }
+
         #endregion
 
         #region principal
@@ -221,8 +298,10 @@ namespace viewPaqSerSoftware
             }
         }
 
+
         #endregion
 
         #endregion
+
     }
 }
